@@ -1,0 +1,74 @@
+:root{
+    --primary-color: #000000;
+    --bs-body-bg: #FFFFFF;
+    --bs-body-font-family: 'Coolvetica', sans-serif;
+}
+html, body{
+    font-family: 'Coolvetica', sans-serif;
+    font-size: 20px;
+    background-color: #FFFFFF;
+    color: #000000;
+}
+.reveal{
+    position: relative;
+    transform: translateY(-150px);
+    opacity: 0;
+    transition: all 1s ease;
+}
+.reveal.active{
+    transform: translateY(0px) !important;
+    opacity: 1;
+}
+
+.navbar .navbar-toggler-icon{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 0, 0, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* HEADER */
+.header{
+    z-index: 2;
+}
+.hero{
+    height: 100vh;
+    background-color: black;
+}
+.hero_video{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 0;
+    opacity: 0.3;
+}
+#header-title{
+    transition: 0.5s;
+}
+#header-title:hover{
+    font-size: 2.7rem !important;
+}
+
+.hero_scroll_btn{
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    z-index: 1;
+    color: #e8e8e8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    font-size: 14px;
+}
+.hero_scroll_btn:hover{
+    color: #FFFFFF;
+    opacity: .8;
+}
+.hero_scroll_btn .bi{
+    transition-delay: .8s;
+    animation: bounce 1s infinite alternate;
+}
