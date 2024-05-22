@@ -21,20 +21,18 @@
 <body>
     <div class="container-fluid px-0 bg-white">
         <!-- NAV -->
-        <nav class="navbar navbar-expand-lg navbar-dark px-3">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light px-3 ">
             <div class="container-fluid" id="nav-content">
-                <div class="col-1">
-                    <a class="navbar-brand" href="#"><img src="files/images/logo.png" class="img-fluid" style="width: 100px !important;"></a>
-                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
-                        <h3 class="htitle offcanvas-title fw-bold text-black" id="offcanvasNavbarLabel"><img src="files/images/logo.png" class="col-3"></h3>
+                        <img src="files/images/logo.png" class="col-3">
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body d-flex flex-column flex-lg-row align-items-lg-center">
+                        <a href="#" class="logo-link"><img src="files/images/logo.png" class="img-fluid" style="width: 100px !important;"></a>
                         <ul class="navbar-nav d-flex flex-column flex-lg-row justify-content-center flex-grow-1">
                             <li class="nav-item px-1">
                                 <a class="fw-semibold nav-link active text-dark" aria-current="page" href="#sobre">Sobre</a>
@@ -49,9 +47,9 @@
                                 <a class="fw-semibold nav-link active text-dark" aria-current="page" href="#home-noticias">Notícias</a>
                             </li>
                         </ul>
-                        <span class="navbar-text text-dark mt-3 mt-lg-0">
+                        <a class="nav-link active text-dark" aria-current="page" href="#home-noticias">
                             Log in
-                        </span>
+                        </a>
                     </div>
                 </div>
             </div>

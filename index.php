@@ -3,43 +3,20 @@
 include("views/blades/header.php");
 ?>      
         <!-- HEADER -->
-        <!-- <header class="header position-relative start-0 top-0 end-0 px-0">
-            <div class="hero position-relative">
-                <div class="h-100 row align-items-center position-relative" id="hero_content">
-                    <div class="container-fluid align-items-center col-9 col-sm-7 col-md-5 position-relative">
-                        <h3 class="fw-bold fs-1 mb-3" id="header-title"><b>ForGated</b><br>A segurança que o seu lar precisa!</h3>
-                        <p class="text-secondary">ForGated pronto para proteger sua casa.</p>
-                    </div>
-                    <div class="container-fluid align-items-right col-10 col-sm-7 col-md-7">
-                        <video class="hero-img img-fluid mb-1 position-relative" autoplay loop muted id="video1">
-                            <source src="files/video.webm" type="video/webm">
-                            Seu navegador não suporta o formato de vídeo WebM.
-                        </video>
-                    </div>
-                </div>
-            </div>     
-        </header> -->
-        <header class="header position-relative start-0 top-0 end-0 px-0" style="background:black">
-            <div class="hero overflow-hidden position-relative">
-                <video playsinline autoplay muted loop loading="lazy" class="hero_video">
-                    <source src="files/movies/MOVIE.mp4" type="video/mp4">
+        <header class="header position-relative start-0 top-0 end-0 px-0 align-items-center">
+            <div class="hero d-flex justify-content-center align-items-center overflow-hidden position-relative">
+                <video playsinline autoplay muted loading="lazy" class="hero_video">
+                    <source src="files/movies/cat.mp4" type="video/mp4">
                 </video>
-    
-                <div class="hero_content h-100 container-xxl position-relative">
-                    <div class="d-flex h-100 align-items-center">
-                        <div class="container-fluid px-5 text-white text-center">
-                            <h3 class="fw-semibold mb-1 fs-1" id="header-title">Produção Audiovisual</h1>
-                            <p class="lead mb-1 fs-6 px-2">A Produção Audiovisual é um segmento que envolve a área de produção artística, cultural e 
-                            multimídia para a circulação em diversos tipos de meios de comunicação. Já parou pra pensar o quanto ela é presente no nosso dia a dia?</p>
-                        </div>
+
+                <div class="hero_content h-100 container-xxl position-relative text-center align-items-center">
+                    <div class="container-fluid" style="font-size: 40px; color: black; margin-top: 200px;" id="hero_text">
+                        <p><b>A CrazyCatGang resgata, castra e doa gatinhos abandonados.<br> Ajude você também.</b></p>
                     </div>
                 </div>
-
-                <a href="#sobre" class="hero_scroll_btn">
-                    Saiba mais! <i class="bi bi-arrow-down-short"></i>
-                </a>
             </div>     
         </header>
+
 
         <section>
         <!-- SOBRE NÓS -->
