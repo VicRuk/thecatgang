@@ -21,7 +21,7 @@
 <body>
     <div class="container-fluid px-0 bg-white">
         <!-- NAV -->
-        <nav class="navbar navbar-expand-lg navbar-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark px-3">
             <div class="container-fluid" id="nav-content">
                 <div class="col-1">
                     <a class="navbar-brand" href="#"><img src="files/images/logo.png" class="img-fluid" style="width: 100px !important;"></a>
@@ -34,8 +34,8 @@
                         <h3 class="htitle offcanvas-title fw-bold text-black" id="offcanvasNavbarLabel"><img src="files/images/logo.png" class="col-3"></h3>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav d-flex flex-column flex-lg-row justify-content-center w-100 align-items-lg-center">
+                    <div class="offcanvas-body d-flex flex-column flex-lg-row align-items-lg-center">
+                        <ul class="navbar-nav d-flex flex-column flex-lg-row justify-content-center flex-grow-1">
                             <li class="nav-item px-1">
                                 <a class="fw-semibold nav-link active text-dark" aria-current="page" href="#sobre">Sobre</a>
                             </li>
@@ -48,12 +48,10 @@
                             <li class="nav-item px-1">
                                 <a class="fw-semibold nav-link active text-dark" aria-current="page" href="#home-noticias">Notícias</a>
                             </li>
-                            <li class="nav-item px-1 mt-3 mt-lg-0 ms-lg-auto">
-                                <span class="navbar-text text-dark">
-                                    Navbar text with an inline element
-                                </span>
-                            </li>
                         </ul>
+                        <span class="navbar-text text-dark mt-3 mt-lg-0">
+                            Log in
+                        </span>
                     </div>
                 </div>
             </div>
