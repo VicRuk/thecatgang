@@ -49,6 +49,16 @@ nav:not(:hover) {
     transition: 0.5s;
 }
 
+::-webkit-scrollbar{
+    width: 7px;
+    background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #FFCB04;
+    border-radius: 3px;
+}
+
 /* HEADER */
 .header{
     z-index: 2;
@@ -103,6 +113,48 @@ nav:not(:hover) {
         width: 250%;
         height: auto;
         z-index: 0;
+    }
+}
+
+/* BODY ADMIN E ADMIN LOGIN */
+
+.body-admin{
+    background-color: #fff;
+    height: 100vh;
+};
+
+.body-usuario{
+    background-color: #fff;
+    height: 100vh;
+};
+
+
+.box-area{
+    width: 930px;
+}
+
+.right-box{
+    padding: 80px 40px 40px 40px
+}
+
+::placeholder{
+    font-size: 16px;
+}
+
+.botao-login{
+    padding-top: 80px;
+}
+
+@media only screen and (max-width: 768px){
+    .box-area{
+        margin: 0 10px;
+    }
+    .left-box{
+        height: 100px;
+        overflow: hidden;
+    }
+    .right-box{
+        padding:  20px;
     }
 }
 
