@@ -34,6 +34,7 @@ function handleIntersection(entries, observer) {
     });
 }
 
+
 const observer = new IntersectionObserver(handleIntersection, options);
 const sectionToWatch = document.querySelector('#home');
 observer.observe(sectionToWatch);
