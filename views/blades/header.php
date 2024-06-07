@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="js/funcoes.js" type="text/javascript"></script>
     
     <title>The Cat Gang</title>
 </head>
@@ -47,7 +48,7 @@
                                 <a class="fw-semibold nav-link active text-dark" aria-current="page" href="#home-noticias">Notícias</a>
                             </li>
                         </ul>
-                        <a class="nav-link active text-dark" aria-current="page" href="#home-noticias">
+                        <a class="nav-link active text-dark" aria-current="page" href="views/login.php">
                             Log in
                         </a>
                     </div>
@@ -55,5 +56,6 @@
             </div>
         </nav>
     </div>
+            <!-- <p>teste</p> -->
 </body>
 </html>

@@ -23,42 +23,8 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     
     <script src="js/funcoes.js" type="text/javascript"></script>
-    <title>ForGated</title>
+    <title>TheCatGang</title>
+    <p>aaaaaaaaaaaaaaaaaaaaaaaaa testetetetetete</p>
+            <!-- <p>teste</p> -->
 </head>
-
-<body class="bg-secondary">
-    <div class="container-fluid px-0">
-        <!-- NAV -->
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container-fluid" id="nav-content">
-                <a class="navbar-brand" href="../index.php"><h5 class="fw-bold text-dark" id="logo">DAMNS.</h5></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h3 class="htitle offcanvas-title fw-bold text-black" id="offcanvasNavbarLabel">DAMNS.</h3>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav flex-grow-1 pe-5 overflow-hidden justify-content-end" data-bs-dismiss="offcanvas" aria-label="Close">
-                            <li class="nav-item px-1">
-                                <a class="fw-semibold nav-link active text-dark" aria-current="page" href="../index.php#sobre">Sobre</a>
-                            </li>
-                            <li class="nav-item px-1">
-                                <a class="fw-semibold nav-link active text-dark" aria-current="page" href="../index.php#projeto">Projeto</a>
-                            </li>
-                            <li class="nav-item px-1">
-                                <a class="fw-semibold nav-link active text-dark" aria-current="page" href="../index.php#equipe">Equipe</a>
-                            </li>
-                            <li class="nav-item px-1">
-                                <a class="fw-semibold nav-link active text-dark" aria-current="page" href="../noticias.php">Notícias</a>
-                            </li>
-                            <li class="nav-item px-1">
-                                <a class="fw-semibold nav-link active text-dark" aria-current="page" href="../index.php#footer">Contato</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
+<body>
