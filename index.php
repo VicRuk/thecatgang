@@ -6,46 +6,50 @@ include("views/blades/header.php");
         <header class="header position-relative start-0 top-0 end-0 px-0 align-items-center">
             <div class="hero d-flex justify-content-center align-items-center overflow-hidden position-relative">
                 <video playsinline autoplay muted loading="lazy" class="hero_video">
-                    <source src="files/movies/cat.mp4" type="video/mp4">
+                    <source src="files/movies/cat2.mp4" type="video/mp4">
                 </video>
 
                 <div class="hero_content h-100 container-xxl position-relative text-center align-items-center">
-                    <div class="container-fluid" style="font-size: 40px; color: black; margin-top: 200px;" id="hero_text">
-                        <p><b>A CrazyCatGang resgata, castra e doa gatinhos abandonados.<br> Ajude você também.</b></p>
+                    <div class="container-fluid" style="color: black; margin-top: 200px;" id="hero_text">
+                        <h1><b>A CrazyCatGang resgata, castra e doa gatinhos abandonados.<br> Ajude você também.</b></h1>
                     </div>
                 </div>
-            </div>     
+            </div>   
         </header>
-
 
         <section>
         <!-- SOBRE NÓS -->
         <div class="container-fluid px-0 text-white position-relative" id="sobrenos">
             <div class="d-flex align-items-center justify-content-center mb-0">
-                <div class="col-lg-10 col-md-10 col-sm-12 col-12 p-5 text-center" id="sobrenos-content">
-                    <p style="color:#000">Sobre Nós</p>
-                        <h1 class="reveal fw-bold mt-0 fs-1" id="blogo">DAMNS.</h1>
-                        <div class="reveal container" id="sobrenos-text">
-                            <p style="color: #000">Nós somos uma equipe de estudantes do ensino médio, apaixonados por tecnologia e segurança domiciliar. Matriculados no Ensino Médio integrado com Desenvolvimento de Sistemas, estamos focados em criar soluções acessíveis e eficazes para proteger residências contra incêndios, vazamentos de gás, supervisão de movimento e sobrecargas elétricas. Unindo nossos conhecimentos em programação e eletrônica, buscamos proporcionar tranquilidade às famílias, tornando a segurança residencial avançada uma realidade acessível a todos.</p>
-                            <p style="color: #000">Nosso compromisso é criar sistemas inteligentes que operem 24/7 para manter as casas seguras e confiáveis, contribuindo para um futuro mais seguro e tecnologicamente avançado.</p>
-                        </div>
+                <div class="col-lg-10 col-md-10 col-sm-12 col-12 p-5 text-center position-relative" id="sobrenos-content">
+                    <div class="d-flex justify-content-center position-absolute top-0 start-50 translate-middle-x w-100">
+                        <img src="files/images/patinhas.png" class="img-fluid">
+                    </div>
+                    <h1 class="reveal fw-bold mt-0 fs-1">Sobre nós</h1>
+                    <img src="files/images/logo.png" class="reveal img-fluid p-4">
+                    <div class="reveal container w-75" id="sobrenos-text">
+                        <p style="color: #000">Somos um ONG formada majoritariamente por mulheres, e que busca instruir a sociedade em relação ao abandono, cuidados com os felinos, entre outros.</p>
+                    </div>
                 </div>
             </div>
         </div>
-        
+
         <!-- HOME -->
         <div class="container-fluid px-0 text-white position-relative" id="home">
             <div class="row align-items-center mb-0 flex-sm-row-reverse">
-                <div class="col-lg-5 col-md-5 col-sm-6 col-12 p-5">
-                    <h2 class="reveal fw-bold my-3 text-dark fs-1" id="title">Saiba mais sobre o nosso Projeto: <b>ForGated</b></h3>
+                <div class="col-lg-5 col-md-12 col-sm-12 col-12 p-5">
+                    <div class="reveal2">
+                        <h2 class="fw-bold my-3 fs-1" id="title">Nós ajudamos a construir uma sociedade melhor!</h3>
+                        <p>Nossa ONG nasceu em 2014, e desde o início nosso objetivo é ajudar os gatinhos, que ainda são estigmatizados em nossa sociedade.<br><br>
+                        Por isso nossa missão é conscientizar e instruir a população de maneira responsável, realizando um trabalho social almejando reduzir a população de gatos de rua.
+                        </p>
+                    </div>
                     <div id="botao"> 
-                        <a href="#sobre" class="text-center"><button type="button" class="btn btn-primary btn-lg btn-block btn-dark fw-bold mb-3">Saiba Mais!</button></a>
+                        <a href="#sobre" class="text-button text-center"><button type="button" class="btn btn-lg fw-bold mb-3" id="button1">Quero ajudar!</button></a>
                     </div>
                 </div>
-                <div class="col-lg-7 col-md-7 col-sm-6 col-12 container-fluid">
-                    <video autoplay muted loading="lazy" class="hero_video" width="100%" id="video2">
-                        <source src="files/animacaologo.mp4" type="video/mp4" class="img-fluid">
-                    </video>
+                <div class="col-lg-7 col-md-12 col-sm-12 col-12 container-fluid">
+                    <img src="files/images/cat-img.png" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -54,206 +58,197 @@ include("views/blades/header.php");
         <div class="container-fluid px-0 text-white position-relative mb-4" id="sobre">
             <div class="col-12 p-4 text-dark">
                 <div class="container pt-3 mb-5" id="secao1">
-                    <h1 class='fw-bold mb-3'>Sobre</h1>
-                    <p class="reveal">
-                        Segundo dados divulgados pela Agência Brasil, mais de 50% dos incêndios ocorridos em casas ou apartamentos, resultaram de sobrecarga no sistema elétrico. Segundo a Associação Brasileira de Conscientização dos Perigos da Eletricidade (Abracopel), em 2020, foram registrados no país, 583 incêndios por sobrecarga, com 26 mortes. Desse total, 309 incêndios aconteceram em casas e apartamentos, resultado em 23 mortes.</p>
+                    <h1 class='fw-bold mb-3'>Como posso ajudar?</h1>
+                    <p>
+                        Nossa ong depende 100% da SUA AJUDA. Existem algumas frentes para ajudar a nossa ong, e temos certeza que uma delas vai dar certo com você.</p>
                     </p>
-                    <p class="reveal">
-                        Além disso, apenas em São Paulo, o Corpo de Bombeiros registrou 4.055 casos de acidentes por decorrência de vazamentos de gás GLP (popularmente conhecido como gás de cozinha).
-                    </p>
-                </div>
-                
-                <div class="container reveal" id="secao1">
-                    <h1 class='fw-bold mb-3'>Objetivo do projeto</h1>
-                    <p class="reveal">
-                        O projeto tem como objetivo evitar que tragédias aconteçam em um espaço onde deve ter paz e tranquilidade. Para isso, nosso produto conta com sensores e outros dispositivos que estão conectados juntamente a um aplicativo mobile e também para desktop. 
-                    </p>
-                    <p class="reveal">
-                        <b>Funções</b>: Monitoramento da rede elétrica em cômodos com maior concentração de produtos eletrônicos (eletrodomésticos, computador, televisão etc); Detectar vazamento de gás que pode resultar em um incêndio; Sistema com sensores de movimento para alertar quando sua casa é invadida quando você não está.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- PROJETO -->
-        <div class="container-fluid px-5 mb-5 text-white position-relative" id="projeto">
-            <div class="container pt-5">
-                <div class="row justify-content-center" id="projeto-container">
-                    <div class="col-12 col-sm-6" id="projeto-coluna-esquerda">
-                        <div class="reveal mb-4 position-relative rounded shadow p-3 mb-5" style="background-color: #EFEFEF;" id="card-projeto1">
-                            <div class="col-10 mt-1" id="card-texto">
-                                <h2 class='fw-bold' style="color: #000;">Proteção contra Incêndio</h2>
-                            </div>
-                            <img src="files/img/abajur2.png" class="img-fluid" id="card-imagem2">
-                            <img src="files/img/cozinha.png" class="img-fluid" id="card-imagem1">
-                        </div>
-                        <div class="reveal mb-4 position-relative rounded shadow p-3 mb-5" style="background-color: #EFEFEF;" id="card-projeto2">
-                            <div class="col-6 mt-1" id="card-texto">
-                                <h2 class='fw-bold' style="color: #000;">Sobrecargas Elétricas</h2>
-                            </div>
-                            <img src="files/img/mao_fio2.png" class="img-fluid" id="card-imagem1">
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-5 mb-4">
-                        <div class="reveal mb-4 position-relative rounded shadow p-3 mb-5" style="background-color: #EFEFEF;" id="card-projeto3">
-                            <div class="col-6" id="card-texto">
-                                <h2 class='fw-bold' style="color: #000;">Vazamento de Gás de Cozinha</h2>
-                            </div>
-                            <img src="files/img/gas2.png" class="img-fluid" id="card-imagem1">
-                        </div>
-                        <div class="reveal mb-4 position-relative rounded shadow p-3 mb-5" style="background-color: #EFEFEF;" id="card-projeto1">
-                            <div class="col-6 mt-1" id="card-texto4">
-                                <h2 class='fw-bold' style="color: #000;">Sensor de Movimento</h2>
-                                <p>Seja avisado caso algum intruso invada sua casa enquanto você está fora!</p>
-                            </div>
-                            <img src="files/img/porta2.png" class="img-fluid" id="card-imagem4">
-                        </div>
+                    <ul>
+                        <li><a href="#">Adotar um gatinho</a></li>
+                        <li><a href="#">Comprar nossa Rifinha</a></li>
+                        <li><a href="#">Doar</a></li>
+                        <li><a href="#">Fazer Lar Temporário</a></li>
+                        <li><a href="#">Se tornar voluntário</a></li>
+                        <li><a href="#">Doar ração, medicamentos, etc</a></li>
+                        <li><a href="#">Engajar com nosso conteúdo</a></li>
+                    </ul>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <img src="files/images/gatos.png" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
-    
-
-        <!-- NOTÍCIAS -->
-        <div class="container-fluid p-5 position-relative bg-secondary" id="noticias">
-            <div class="container border rounded mt-5 py-5 mb-5 bg-white col-12 h-100 d-flex flex-column justify-content-center align-items-center" id="home-noticias">
-                <h1 class='fw-bold px-2 mb-3'>Últimas notícias</h1>
-                <div class="container row justify-content-center">
-                    <?php
-                    $query = mysqli_query($conexao, "SELECT * FROM blog INNER JOIN bloginfo ON blog_bloginfo_codigo = bloginfo_codigo INNER JOIN blogimg ON blog_blogimg_codigo = blogimg_codigo INNER JOIN usuario ON blog_usuario_codigo = usuario_codigo ORDER BY blog_codigo desc limit 1;");
-                    while($exibe = mysqli_fetch_array($query)){
-                    $Data = new DateTime($exibe[7]);
-                    $stringDate = $Data -> format('d/m/Y, H:i:s');
-                    ?>
-                    <div class="col-md-7 col-sm-12 col-12 my-2">
-                        <div class="reveal card-container border rounded shadow-sm h-100 d-flex flex-column justify-content-center">
-                            <div class="row align-items-center justify-content-center m-2">
-                                <div class="card-image col-md-6 mb-2 d-flex flex-column justify-content-center">
-                                    <a href="page.php?idb=<?php echo $exibe[0]?>"><img src="files/img/blog/<?php echo $exibe[10] ?>" class="img-fluid" alt="ImgBlog"></a>
-                                </div>
-                                <div class="card-corpo col-md-6 d-flex flex-column">
-                                    <div class="card-title">
-                                        <a class="text-dark text-decoration-none fw-bold" href="page.php?idb=<?php echo $exibe[0]?>"><?php echo $exibe[5] ?></a>
-                                    </div>
-                                    <div class="card-sobre mb-2">
-                                        <a class="text-dark" href="page.php?idb=<?php echo $exibe[0]?>"><?php echo substr($exibe[6],0,50)."..." ?></a>
-                                    </div>
-                                    <div class="card-usuario">
-                                        <p class="fst-italic fw-light mb-0"><?php echo "Criado por $exibe[13]"?></p>
-                                        <p class="fst-italic fw-light mb-0"><?php echo "$stringDate"?></p>
-                                    </div>
-                                </div>
-                            </div>
+        
+        <!-- ADOÇÃO -->
+        <div class="container-fluid px-0 text-white position-relative" id="adote">
+            <div class="row align-items-center px-5 flex-sm-row-reverse">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                    <div class="reveal2">
+                        <div class="my-2">
+                            <h2 class="fw-bold" id="title2">Sissi</h3>
+                            <p3 class="position-absolute" style="top: 100px">Para Adoção</p3>
                         </div>
-                    </div>
-                    <?php } ?>
-
-                    <div class="col-md-5 col-sm-12 col-12 my-2">
-                    <?php
-                    $query = mysqli_query($conexao, "SELECT * FROM blog INNER JOIN bloginfo ON blog_bloginfo_codigo = bloginfo_codigo INNER JOIN blogimg ON blog_blogimg_codigo = blogimg_codigo INNER JOIN usuario ON blog_usuario_codigo = usuario_codigo ORDER BY blog_codigo desc limit 1,2;");
-                    while($exibe = mysqli_fetch_array($query)){
-                    $Data = new DateTime($exibe[7]);
-                    $stringDate = $Data -> format('d/m/Y, H:i:s');
-                    ?>
-                        <div class="reveal row align-items-center justify-content-center" id="noticia-direita">
-                            <div class="card-container border rounded shadow-sm h-100 d-flex flex-column justify-content-center">
-                                <div class="row align-items-center justify-content-center m-2">
-                                    <div class="card-image2 col-md-6 d-flex flex-column justify-content-center">
-                                        <a href="page.php?idb=<?php echo $exibe[0]?>"><img src="files/img/blog/<?php echo $exibe[10] ?>" class="img-fluid" alt="ImgBlog"></a>
-                                    </div>
-                                    <div class="card-corpo col-md-6 d-flex flex-column">
-                                        <div class="card-title">
-                                            <a class="text-dark text-decoration-none fw-bold" href="page.php?idb=<?php echo $exibe[0]?>"><?php echo $exibe[5] ?></a>
-                                        </div>
-                                        <div class="card-sobre mb-2">
-                                            <a class="text-dark" href="page.php?idb=<?php echo $exibe[0]?>"><?php echo substr($exibe[6],0,50)."..." ?></a>
-                                        </div>
-                                        <div class="card-usuario">
-                                            <p class="fst-italic fw-light mb-0"><?php echo "Criado por $exibe[13]"?></p>
-                                            <p class="fst-italic fw-light mb-0"><?php echo "$stringDate"?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
+                        <p>Olá. Aqui é a Sissi. Quando cheguei na ONG, estava assustada e bem insegura. Com o tempo, ganhei confiança e percebi que as tias não iriam me machucar. Assim, fui adotada e achei que seria feliz, que teria uma família e um ambiente acolhedor para evoluir.<br><br>
+                        Porém, não foi bem assim… fui devolvida após alguns meses. Não tiveram paciência comigo e com minha evolução. Agora, estou esperando uma nova chance de ser feliz. Ainda sou um tanto quanto insegura, então preciso de um humano paciente e amoroso.<br> 
+                        Será que é você?
+                        </p>
                     </div>
                 </div>
-                <a href="noticias.php"><button type="button" class="btn btn-lg btn-block" id="btn-mais">Todas as notícias</button></a>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12 container-fluid">
+                    <img src="files/images/sissi.png" class="img-fluid reveal3">
+                </div>
+            </div>
+            <div class="container-fluid px-4">
+                <h3 class='fw-bold text-muted'>Assim como Sissi...<br>Esses gatos também precisam de um lugar para se chamar de lar</h3>
+            </div>
+            <div class="carousel-container my-3">
+                <div class="carousel">
+                    <img src="files/images/cenoura.png" class="carousel-image">
+                    <img src="files/images/manu.png" class="carousel-image">
+                    <img src="files/images/shuri.png" class="carousel-image">
+                    <img src="files/images/nemo.png" class="carousel-image">
+                    <img src="files/images/wakanda.png" class="carousel-image">
+                    <img src="files/images/godofredo.png" class="carousel-image">
+                    <img src="files/images/chokito.png" class="carousel-image">
+                    <img src="files/images/chuchu.png" class="carousel-image">
+                    <img src="files/images/biju.png" class="carousel-image">
+                    <img src="files/images/qualy.png" class="carousel-image">
+                    <img src="files/images/tubaina.png" class="carousel-image">
+                </div>
+            </div>
+            <div class="row align-items-center px-5 flex-sm-row-reverse" id="adote-secao">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                    <div>
+                        <h2 class="fw-bold my-3 fs-1" id="title">Quer dar amor e um lar para um gatinho? </h3>
+                        <p>Cadastre-se agora e faça parte dessa jornada incrível de adoção!<br><br></p>
+                    </div>
+                    <div id="botao"> 
+                        <a href="cadastro" class="text-button text-center"><button type="button" class="btn btn-lg fw-bold mb-3" id="button2">Cadastre-se</button></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12 text-center container-fluid">
+                    <img src="files/images/adote.png" class="img-fluid">
+                    <h1 style="font-size: 80px !important">Adote um gatinho!</h1>
+                </div>
             </div>
         </div>
+        
+        <!-- RIFAS -->
+        <div class="position-relative start-0 top-0 end-0 px-0 align-items-center" id="rifas">
+            <div class="rifas d-flex justify-content-center align-items-center overflow-hidden position-relative">
+                <img src="files/images/rifas_cut4.png" class="rifas-img image-fluid w-100">
 
+                <div class="hero_content h-100 container-xxl position-relative text-center align-items-center">
+                    <div class="container-fluid w-75 reveal2" style="color: black; margin-top: 5%;" id="rifas-conteudo">
+                        <h1>Compre nossa Rifinha!</h1>
+                        <p4>Compre nossa Rifa, estamos sempre criando novas rifas com prêmios variados.<br>
+                        Nossa rifinha nos ajuda a angariar parte do valor necessário para cobrir os custos da ong.<br>
+                        Acesse o link e solicite um número:<br><br></p4>
+                        <div id="botao"> 
+                            <a href="https://api.whatsapp.com/message/KT46S26DKF5QO1?autoload=1&app_absent=0" class="text-button text-center"><button type="button" class="btn btn-lg fw-bold mb-3" id="button2">Quero comprar</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
 
-        <!-- EQUIPE -->
-        <div class="container-fluid px-5 mt-5 text-dark position-relative mb-3" id="equipe">
-            <h1 class='fw-bold mb-4'>Nossa Equipe</h1>
-            <div class="reveal row px-2" id="equipe-conteudo">
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="card text-center">
-                        <img class="card-img-top img-fluid" src="files/img/ferrari.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold mb-3" id="nome">Matheus Ferrari Abrahão</h5>
-                            <p class="card-text fw-bold">Designer Digital</p>
-                            <p class="card-text"><small class="text-muted">Responsável pelo design digital do website, aplicativo mobile e do software para desktop.</small></p>
-                            <ul class="text-center d-flex justify-content-center position-relative" id="redes">
-                                <li><a href="https://www.instagram.com/mtzferrari/" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a></li>
-                                <li><a href="https://www.linkedin.com/in/matheus-ferrari-abrahão-893b17237/" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-                                <li><a href="https://github.com/MatheusFAbr" target="_blank"><ion-icon name="logo-github"></ion-icon></a></li>
-                            </ul>
-                        </div>
+        <!-- INSTALAÇÕES -->
+        <div class="container-fluid px-0 text-white position-relative p-5" id="instalacoes">
+            <div class="row align-items-center mb-0">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12 p-5">
+                    <div>
+                        <h1 class="fw-bold my-3 fs-1" id="title">Instalações</h1>
+                        <p>Somos uma ONG virtual, ou seja, não possuímos um espaço físico.<br><br>
+                        Nós atuamos em parcerias com clínicas veterinárias, onde nossos gatos ficam durante o tratamento de doenças ou enquanto aguardam lares temporários. Lares temporários são voluntários que cedem o seu espaço (carinho, dedicação e muito mais) para receber os miaus até a doação, sendo todos os insumos providos pela ONG.<br><br>
+                        Além dos lares temporários, temos um grande número de voluntárias que ajudam a realizar a logística desse nosso projeto. São elas as tias do resgate, do CED, as veterinárias, a tia do financeiro, nossa advogata, a voluntária que coordena os LTs, a tia da Rifinha, as meninas da comunicação e as voluntárias que cuidam de todas as mensagens que recebemos de vocês em nossas redes sociais.<br><br>
+                        Pessoas que doam seu tempo, suas habilidades e muito carinho para ajudar nossos gatinhos. Você quer ser uma dessas pessoas? Então se torne um voluntário.
+                        Tá esperando o quê?
+                        </p>
+                    </div>
+                    <div id="botao"> 
+                        <a href="#sobre" class="text-button text-center"><button type="button" class="btn btn-lg fw-bold mb-3" id="button3">Quero ajudar!</button></a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="card text-center">
-                        <img class="card-img-top img-fluid" src="files/img/yamamoto.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold mb-3">Matheus Yamamoto Dias</h5>
-                            <p class="card-text fw-bold">Programador Mobile</p>
-                            <p class="card-text"><small class="text-muted">Responsável por criar o aplicativo mobile do projeto.</small></p>
-                            <ul class="text-center d-flex justify-content-center position-relative" id="redes">
-                                <li><a href="https://www.instagram.com/matheus_yamas/" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a></li>
-                                <li><a href="https://www.youtube.com/channel/UC8vWyKLaITcUV-2a4JeKlGg" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-                                <li><a href="https://github.com/yHiroshiz" target="_blank"><ion-icon name="logo-github"></ion-icon></a></li>
-                            </ul>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12 container-fluid px-5">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-12 p-0 align-items-center">
+                            <div class="mb-2 reveal2"><div style="height:300px; overflow:hidden"><img src="files/images/cat1.png" class="image-fluid w-100" style="height: auto"></div></div>
+                            <div class="reveal2"><div style="height:300px; overflow:hidden"><img src="files/images/cat2.png" class="image-fluid w-100"></div></div>
                         </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-12 pt-5" style="top:-250px"><div class="reveal2" style=" height:550px; background-image: url('files/images/cat3.png'); background-repeat: no-repeat"></div></div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="card text-center">
-                        <img class="card-img-top img-fluid" src="files/img/leandro.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold mb-3">Leandro Takeo Oyadomari</h5>
-                            <p class="card-text fw-bold">Programador Back-end</p>
-                            <p class="card-text"><small class="text-muted">Responsável por criar o software do projeto.</small></p>
-                            <ul class="text-center d-flex justify-content-center position-relative" id="redes">
-                                    <li><a href="https://www.instagram.com/le.takeo/" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a></li>
-                                    <li><a href="https://www.linkedin.com/in/leandro-oyadomari-856998231/" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-                                    <li><a href="https://github.com/takeoya" target="_blank"><ion-icon name="logo-github"></ion-icon></a></li>
-                            </ul> 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="card text-center">
-                        <img class="card-img-top img-fluid" src="files/img/victor.png." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold mb-3">Victor Ryuki Tamezava</h5>
-                            <p class="card-text fw-bold mb-0">Designer Digital</p>
-                            <p class="card-text fw-bold">Programador WEB</p>
-                            <p class="card-text"><small class="text-muted">Responsável pelo design digital do website, aplicativo mobile e do software para desktop.</small></p>
-                            
-                            <ul class="text-center d-flex justify-content-center position-relative" id="redes">
-                                <li><a href="https://www.instagram.com/vicruk_edits/" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a></li>
-                                <li><a href="https://www.linkedin.com/in/victor-tamezava/" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-                                <li><a href="https://github.com/VicRuk" target="_blank"><ion-icon name="logo-github"></ion-icon></a></li>
-                            </ul>
-                        </div>
+                    <div class="row">
+                        <div class="col-12 pt-3 reveal2 p-0"><img src="files/images/cat4.png" class="image-fluid w-100"></div></div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <p>teste</p> -->
+
+        <!-- DENÚNCIA -->
+        <div class="container-fluid px-0 text-white position-relative" style="background-color: #000" id="denuncia">
+            <div class="row align-items-center mb-0">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12 p-5">
+                    <div>
+                        <h1 class="fw-bold my-3 fs-1 text-white" id="title">Maus tratos contra animais</h1>
+                        <h1 class="text-danger position-relative" style="top: -20px !important;">É CRIME!</h1>
+                        <div class="bg-danger px-2 me-5 text-center">
+                            <p class="text-white">Lei Federal 9.605/98 ART. 32</p>
+                        </div>
+                        <p class="text-white">Texto
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12 container-fluid">
+                    <img src="files/images/cat-denuncia.png" class="img-fluid">
+                </div>
+            </div>
+        </div>
+
+        <!-- DOAÇÕES -->
+        <div class="container-fluid px-0 text-white position-relative" style="background-color: #000" id="doacao">
+            <div class="row align-items-center mb-0 flex-sm-row-reverse px-5">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                    <div>
+                        <h1 class="fw-bold my-3 fs-1 text-white" id="title">Você doa, e nós continuamos a resgatar e cuidar dos gatinhos em situação de risco</h1>
+                        <p class="text-white">AJUDE-NOS A CONTINUAR CUIDANDO.<br>
+                        Você pode contribuir das seguintes formas:<br>
+
+                        Transferência Bancária para:<br></p>
+                        <p2 class="text-white">Banco Cora (403)<br>
+                          Agência: 0001 <br>
+                          Conta: 1385067-3 <br>
+                          Nome da Associação: Crazy Cat Gang<br> 
+                          CNPJ: 41.942.573/0001-11<br><br></p2>
+
+                        <p class="text-white">PIX</p>
+                        <p2 class="text-white">e-mail: ccgcwb@gmail.com<br>
+                        <p2 class="text-white">CNPJ: 41.942.573/0001-11<br><br></p2>
+
+                        <p class="text-white">Faça uma doação online mensal:</p>
+                        <p2 class="text-white">Picpay: crazycatgang</p2><br>
+                        <p2 class="text-white">Padrim: padrim.com.br/crazycatgang</p2><br>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-12 col-sm-12 col-12 container-fluid">
+                    <img src="files/images/catgang.png" class="img-fluid">
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOG -->
+        <div class="header position-relative start-0 top-0 end-0 px-0" id="blog">
+            <div class="hero overflow-hidden position-relative" style="background-image: url('files/images/blog.png')">
+                <div class="hero_content h-100 container-xxl position-relative">
+                    <div class="d-flex h-100 align-items-center">
+                        <div class="container-fluid px-5 text-white text-center">
+                            <h3 class="fw-semibold mb-1 fs-1" id="header-title">Gostou da gente?<br>Quer saber mais do mundo felino?<br></h1>
+                            <div id="botao" class="p-2"> 
+                                <a href="https://crazycatgang.com.br/" class="text-button text-center"><button type="button" class="btn btn-lg fw-bold mb-3" id="button1">Acesse o nosso blog</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>     
+        </div>
 <?php
 include("views/blades/footer.php");
-?>
+?>   

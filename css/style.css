@@ -9,7 +9,41 @@ html, body{
     background-color: #FFFFFF;
     color: #000000;
 }
+
+h1, h2{
+    color: #000 !important
+}
+h3{
+    font-size: 2em !important; 
+}
+p{
+    padding: 0;
+    margin: 0;
+    color: #000;
+    font-size: 1.3em;
+}
+p2{
+    color: #000;
+    font-size: 1em;
+}
+p3{
+    color: #000;
+    font-size: 0.9em;
+}
+p4{
+    font-size: 1.4em;
+}
+#title2 {
+    font-size: 5em !important;
+    font-family: 'Shining Monday';
+    letter-spacing: 5px;
+    color: #FFCB04 !important;
+    -webkit-text-stroke: 0.1px #000; /* Contorno do texto */
+    text-shadow: 2px 2px #000; /* Sombra do texto */
+}
+
 section{
+    overflow-y: hidden;
     overflow-x: hidden;
 }
 .reveal{
@@ -22,41 +56,68 @@ section{
     transform: translateY(0px) !important;
     opacity: 1;
 }
+.reveal2 {
+    position: relative;
+    transform: scale(0.2);
+    transition: transform 0.9s cubic-bezier(0.65, -0.6, 0.25, 1.5), opacity 1s ease;
+}
+.reveal2.active {
+    transform: scale(1);
+    opacity: 1;
+}
+.reveal3 {
+    position: relative;
+    transform: scale(0.2);
+    transition: transform 0.9s cubic-bezier(0.65, -0.6, 0.25, 1.5), opacity 1s ease;
+}
+.reveal3.active {
+    transform: scale(1);
+    opacity: 1;
+}
 
+
+#button1{
+    background-color: #FFCB04;
+    color: #000;
+}
+#button2{
+    background-color: #000;
+    color: #FFCB04;
+    letter-spacing: 1px;
+}
+#button3{
+    background-color: #000;
+    color: #FFF;
+    letter-spacing: 1px;
+}
 .navbar .navbar-toggler-icon{
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 0, 0, 1%29' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
-.navbar .navbar-toggler {
-    outline: none !important; /* Remove o contorno ao redor do botão */
-    box-shadow: none !important; /* Remove a sombra que pode ser aplicada pelo navegador */
+nav{
+    opacity: 0.5;
+    transition: opacity 0.5s;
 }
-
-.navbar .navbar-toggler:focus {
-    outline: none !important; /* Remove o contorno ao focar no botão */
-    box-shadow: none !important; /* Remove a sombra que pode ser aplicada pelo navegador */
+nav.navbar-top{
+    opacity: 1;
 }
-
-.navbar .navbar-toggler:active {
-    outline: none !important; /* Remove o contorno ao clicar no botão */
-    box-shadow: none !important; /* Remove a sombra que pode ser aplicada pelo navegador */
-}
-
-nav:hover{
+nav:hover {
+    opacity: 100%;
     background-color: #FFCB04 !important;
     transition: 0.5s;
 }
 nav:not(:hover) {
     transition: 0.5s;
 }
-
-::-webkit-scrollbar{
-    width: 7px;
+::-webkit-scrollbar {
+    width: 10px;
     background-color: #000000;
 }
-
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
     background-color: #FFCB04;
-    border-radius: 3px;
+    border-radius: 5px;
+}
+.scrollbar-no-radius::-webkit-scrollbar-thumb {
+    border-radius: 0;
 }
 
 /* HEADER */
@@ -67,24 +128,182 @@ nav:not(:hover) {
     height: 100vh;
     background-color:#FFCB04;
     display: flex;
-    justify-content: center;
     align-items: center;
+}
+#hero_text{
+    animation: zoom-in-zoom-out 1s ease;
+}
+@keyframes zoom-in-zoom-out {
+    0% {
+      transform: scale(0, 0);
+    }
+    50% {
+      transform: scale(1.5, 1.5);
+    }
+    100% {
+      transform: scale(1, 1);
+    }
 }
 .hero_video {
     position: absolute;
-    width: 100%;
+    width: 90%;
     height: auto;
     bottom: 0;
     object-fit: contain;
     z-index: 0;
 }
 
+#home{
+    background-color: #F9F9F9;
+}
+.text-button:hover{
+    color: #000;
+}
+#button1:hover, #button2:hover, #button3:hover{
+    animation: zoom-jiggle 1s infinite ease;
+}
+@keyframes zoom-jiggle{
+    0%{
+        transform: scale(1, 1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.2, 1.2);
+    }
+    100% {
+        transform: scale(1, 1) rotate(0deg);
+    }
+}
+
+#secao1 ul li a{
+    font-size: 1.3em;
+    color: #000;
+    text-decoration: underline;
+}
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    width: max-content;
+    animation: scroll 80s linear infinite;
+}
+
+.carousel-image {
+    width: 20%;
+    padding: 10px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.carousel-container::before, .carousel-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 15%;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.carousel-container::before {
+    left: 0;
+}
+.carousel-container::after {
+    right: 0;
+    transform: rotate(180deg);
+}
+
+#adote-secao{
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,239,176,1) 0%, rgba(255,203,4,1) 20%);
+    min-height: 100vh; 
+}
+
+.rifas{
+    height: 100vh;
+    background-color:#FFCB04;
+    display: flex;
+    align-items: center;
+}
+.rifas-img {
+    position: absolute;
+    bottom: 0;
+    z-index: 0;
+}
+
+
+#footer{
+    background-color: #181818;
+    width: 100%;
+}
+#items-footer{
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-size: 15px;
+}
+#redes2{
+    margin: 10px 0;
+    flex-wrap: wrap;
+    padding-inline-start: 0px !important;
+}
+#redes2 li a{
+    width: 1.6em;
+    height: 1.6em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3em;
+    color: #FFF;
+    margin: 0 5px;
+    transition: 0.5s;
+    border-radius: 50%;
+    border: 2px solid white
+}
+#redes2 li{
+    list-style: none;
+}
+#redes2 li a:hover{
+    transform: translateY(-10px);
+}
+#redes2 li{
+    list-style: none;
+}
+#copyright{
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: rgb(209, 209, 209);
+}
+
+
 @media (max-width: 1400px){
     .hero_video {
         padding-left: 10px;
-        width: 150%;
+        width: 100%;
         height: auto;
         z-index: 0;
+    }
+    #hero_text {
+        margin-top: 20% !important;
+        font-size: 25px !important;
     }
 }
 @media (max-width: 991.98px){
@@ -93,9 +312,15 @@ nav:not(:hover) {
     }
     .hero_video {
         padding-left: 10px;
-        width: 200%;
+        width: 140%;
         height: auto;
         z-index: 0;
+    }
+    p4{
+        font-size: 1.4em;
+    }
+    #rifas-conteudo{
+        width: 100% !important;
     }
 }
 @media (max-width: 600px){
@@ -115,46 +340,3 @@ nav:not(:hover) {
         z-index: 0;
     }
 }
-
-/* BODY ADMIN E ADMIN LOGIN */
-
-.body-admin{
-    background-color: #fff;
-    height: 100vh;
-};
-
-.body-usuario{
-    background-color: #fff;
-    height: 100vh;
-};
-
-
-.box-area{
-    width: 930px;
-}
-
-.right-box{
-    padding: 80px 40px 40px 40px
-}
-
-::placeholder{
-    font-size: 16px;
-}
-
-.botao-login{
-    padding-top: 80px;
-}
-
-@media only screen and (max-width: 768px){
-    .box-area{
-        margin: 0 10px;
-    }
-    .left-box{
-        height: 100px;
-        overflow: hidden;
-    }
-    .right-box{
-        padding:  20px;
-    }
-}
-
