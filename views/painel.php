@@ -62,7 +62,6 @@ include("blades/header2.php");
         </table>
     </div>
 </div>
-        <!-- <p>teste</p> -->
 <?php
 include("blades/footer2.php");
 ?>

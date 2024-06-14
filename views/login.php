@@ -1,6 +1,6 @@
 <?php
 include("../models/conexao.php");
-include("blades/header3.php");
+include("blades/header2.php");
 ?>
 <div class="body-usuario">
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
@@ -32,7 +32,6 @@ include("blades/header3.php");
     </div>
 </div>
 </div>
-        <!-- <p>teste</p> -->
 <?php
-include("blades/footer3.php")
+include("blades/footer2.php")
 ?>

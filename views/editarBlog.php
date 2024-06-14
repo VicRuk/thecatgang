@@ -43,7 +43,6 @@ $query = mysqli_query($conexao, "SELECT * FROM blog INNER JOIN bloginfo ON blog_
     </form>
     <?php } ?>
 </div>
-        <!-- <p>teste</p> -->
 <?php
 include("blades/footer2.php");
 ?>
