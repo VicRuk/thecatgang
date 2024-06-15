@@ -2,17 +2,18 @@
 include("../models/conexao.php");
 include("../views/blades/header3.php");
 ?>
+<div class="wrapper">
 <?php
 include("sidebar.php");
 ?>
-    <div class="main container-fluid p-3">
+    <div class="main p-3">
         <div class="text-center">
             <h1>
-                MAIN
+                Tela4
             </h1>
         </div>
     </div>
-
+</div>
 <?php
 include("../views/blades/footer3.php");
 ?>

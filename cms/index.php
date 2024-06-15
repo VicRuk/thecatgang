@@ -24,7 +24,9 @@ include("../views/blades/header2.php");
                     <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Senha">
                 </div>
                 <div class="input-group mb-3 botao-login" >
-                    <button class="btn btn-lg btn-warning w-100 fs-6">Login</button>
+                    <a href="gestao.php" class="btn btn-lg btn-warning w-100 fs-6">
+                        Login
+                    </a>
                 </div>
             </div>
         </div>
