@@ -39,7 +39,8 @@
 
             <ul class="text-center d-flex justify-content-center position-relative mt-5" id="redes2">
                 <li><a href="https://www.instagram.com/crazycatgang/" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a></li>
-                <li><a href="https://x.com/crazycatgangcwb" target=""><ion-icon name="logo-twitter"></ion-icon></a></li>
+                <li><a href="https://x.com/crazycatgangcwb" target="_blank"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                <li><a href="https://www.facebook.com/crazycatgang/?locale=pt_BR" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a></li>
             </ul>
             <p class="text-center" id="copyright">© CRAZY CAT GANG | All Rights Reserved</p>
         </footer>

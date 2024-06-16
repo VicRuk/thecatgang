@@ -1,0 +1,223 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Coolvetica', sans-serif;
+    overflow-x: hidden;
+}
+h1, h2 {
+    color: #000 !important;
+    padding: 0;
+    margin: 0;
+}
+
+h3 {
+    font-size: 2em !important;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+    color: #000;
+    font-size: 1.3em;
+}
+
+p2 {
+    color: #000;
+    font-size: 1em;
+}
+
+p3 {
+    color: #000;
+    font-size: 0.9em;
+}
+
+p4 {
+    font-size: 1.4em;
+}
+
+#button1, .btn1, #button3{
+    background-color: #FFCB04;
+    color: #000;
+    border: 0;
+    height: 40px;
+    width: 90px;
+}
+#continueButton:hover, #button1:hover, .btn1:hover {
+    background-color: #ecbd00;
+    color: #000;
+}
+#button2{
+    border: 0;
+    height: 40px;
+    width: 90px;
+}
+#button3:hover{
+    animation: zoom-jiggle 1s infinite ease;
+}
+@keyframes zoom-jiggle{
+    0%{
+        transform: scale(1, 1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.2, 1.2);
+    }
+    100% {
+        transform: scale(1, 1) rotate(0deg);
+    }
+}
+.body-usuario {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    width: 100%;
+}
+
+.fixed-left {
+    background-color: #FFCB04;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.scrollable-right {
+    width: 55%;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.content-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.form-part {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.form-part.active {
+    display: block;
+}
+
+.form-part.exit-left {
+    animation: slideOutLeft 0.5s forwards;
+}
+
+.form-part.enter-right {
+    animation: slideInRight 0.5s forwards;
+}
+
+.form-part.exit-right {
+    animation: slideOutRight 0.5s forwards;
+}
+
+.form-part.enter-left {
+    animation: slideInLeft 0.5s forwards;
+}
+.form-control:focus {
+    border-color: #FFCB04;
+    outline: 0;
+    box-shadow: 0 0 0.25rem rgba(255, 203, 4, 0.5); /* Sombra quando focado */
+}
+@keyframes slideOutLeft {
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.volunteer-type {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.volunteer-container {
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.volunteer-container:hover {
+    transform: scale(1.01);
+    border-color: #FFCB04;
+}
+
+.volunteer-container.selected {
+    border-color: #FFCB04;
+    background-color: #fffef0;
+}
+.error {
+    color: red;
+    display: none;
+}
+@media (max-width: 992px) {
+    #nav-img{
+        display: none;
+    }
+    .fixed-left {
+        display: none;
+        order: 2;
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+    }
+    .scrollable-right{
+        position: relative;
+        width: 100%;
+        margin-left: 0;
+    }
+}

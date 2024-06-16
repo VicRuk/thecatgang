@@ -1,0 +1,173 @@
+:root {
+    --primary-color: #000000;
+    --bs-body-bg: #FFFFFF;
+    --bs-body-font-family: 'Coolvetica', sans-serif;
+}
+
+html, body {
+    font-family: 'Coolvetica', sans-serif;
+    font-size: 20px;
+    background-color: #FFFFFF;
+    color: #000000;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+h1, h2 {
+    color: #000 !important;
+    padding: 0;
+    margin: 0;
+}
+
+h3 {
+    font-size: 2em !important;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+    color: #000;
+    font-size: 1.3em;
+}
+
+p2 {
+    color: #000;
+    font-size: 1em;
+}
+
+p3 {
+    color: #000;
+    font-size: 0.9em;
+}
+
+p4 {
+    font-size: 1.4em;
+}
+#button1{
+    background-color: #FFCB04;
+    color: #000;
+}
+#button1:hover, #button2:hover, #button3:hover{
+    animation: zoom-jiggle 1s infinite ease;
+}
+@keyframes zoom-jiggle{
+    0%{
+        transform: scale(1, 1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.2, 1.2);
+    }
+    100% {
+        transform: scale(1, 1) rotate(0deg);
+    }
+}
+#title2 {
+    font-size: 5em !important;
+    font-family: 'Shining Monday';
+    letter-spacing: 5px;
+    color: #FFCB04 !important;
+    -webkit-text-stroke: 0.1px #000;
+    text-shadow: 2px 2px #000;
+}
+
+.body-usuario {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.fixed-left {
+    background-color: #FFCB04;
+    width: 45%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.scrollable-right {
+    margin-left: 45%;
+    width: 55%;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.scrollable-right > .content-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+}
+
+.form-control {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.6); /* Sombra */
+}
+
+.form-control:focus {
+    border-color: #FFCB04;
+    outline: 0;
+    box-shadow: 0 0 0.25rem rgba(255, 203, 4, 0.5); /* Sombra quando focado */
+}
+
+@media (max-width: 992px) {
+    html, body {
+        overflow-y: visible;
+    }
+
+    .fixed-left {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+    }
+    .scrollable-right{
+        position: relative;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .body-usuario {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .scrollable-right {
+        order: 1; /* Altera a ordem para que o conteúdo rolável fique acima */
+        padding: 20px 0;
+        align-items: flex-start; /* Alinha ao topo */
+    }
+
+    .scrollable-right > .content-wrapper {
+        height: auto;
+        align-items: center; /* Centraliza horizontalmente */
+    }
+
+    .fixed-left {
+        order: 2; /* Altera a ordem para que a barra lateral fixa fique abaixo */
+        width: 100%;
+        height: auto;
+        margin-top: 20px; /* Espaço opcional para separar do topo */
+    }
+}
