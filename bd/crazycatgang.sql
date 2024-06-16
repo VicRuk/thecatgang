@@ -27,8 +27,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` text NOT NULL,
   `celular` text NOT NULL,
   `cpf` text NOT NULL,
-  `@` text DEFAULT NULL,
-  `senha` text NOT NULL,
+  `insta` text DEFAULT NULL,
+  `senha` text DEFAULT NULL,
+  `tipo` text NOT NULL,
   `estudante` int(11) DEFAULT 0,
   `escolaridade` text DEFAULT NULL,
   `curso_graduacao` text DEFAULT NULL,
@@ -36,25 +37,26 @@ CREATE TABLE IF NOT EXISTS `user` (
   `area_atuacao` text DEFAULT NULL,
   `funcoes` text DEFAULT NULL,
   `funcoes_interesse` text DEFAULT NULL,
-  `caronas_disponibilidade` text DEFAULT NULL,
+  `carona_disponibilidade` text DEFAULT NULL,
   `razao` text DEFAULT NULL,
   `certificado` int(11) DEFAULT NULL,
   `disponibilidade` text DEFAULT NULL,
   `observacao` text DEFAULT NULL,
-  `newsletter` int(11) DEFAULT 0,
   `amor` text DEFAULT NULL,
+  `newsletter` int(11) DEFAULT 0,
   `mora_em` text DEFAULT NULL,
-  `pets` text DEFAULT NULL,
+  `pets` int(11) DEFAULT 0,
   `pets_quais` text DEFAULT NULL,
   `pets_vacinas` text DEFAULT NULL,
   `pets_testados` text DEFAULT NULL,
   `pets_castrados` text DEFAULT NULL,
   `bairro` text DEFAULT NULL,
   `endereco` text DEFAULT NULL,
+  `user_status` varchar(50) NOT NULL DEFAULT 'Em Análise',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela crazycatgang.user: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela crazycatgang.user: ~8 rows (aproximadamente)
 DELETE FROM `user`;
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
