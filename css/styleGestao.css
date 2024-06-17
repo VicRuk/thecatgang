@@ -15,10 +15,28 @@ li {
     color: #000;
 }
 
-h1 {
-    font-weight: 600;
-    font-size: 1.5rem;
+h1, h2{
+    color: #000 !important
+}
+h3{
+    font-size: 2em !important; 
+}
+p{
+    padding: 0;
+    margin: 0;
     color: #000;
+    font-size: 1.3em;
+}
+p2{
+    color: #000;
+    font-size: 1em;
+}
+p3{
+    color: #000;
+    font-size: 0.9em;
+}
+p4{
+    font-size: 1.4em;
 }
 
 body {
@@ -57,12 +75,8 @@ body {
     background-color: transparent;
     cursor: pointer;
     border: 0;
-    padding: 1rem 1.5rem;
-}
-
-.toggle-btn i {
-    font-size: 1.5rem;
-    color: #000;
+    max-width: 130px;
+    padding: 1rem 0rem;
 }
 
 .sidebar-logo {
@@ -73,6 +87,7 @@ body {
     color: #000;
     font-size: 1.15rem;
     font-weight: 600;
+    padding-right: 10px;
 }
 
 #sidebar:not(.expand) .sidebar-logo,
@@ -96,6 +111,10 @@ a.sidebar-link {
 
 .sidebar-link i {
     font-size: 1.1rem;
+    margin-right: .75rem;
+}
+.sidebar-link img {
+    width: 1.1rem;
     margin-right: .75rem;
 }
 

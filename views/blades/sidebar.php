@@ -1,19 +1,34 @@
     <aside id="sidebar">
         <div class="d-flex">
             <button class="toggle-btn" type="button">
-                <i class="lni lni-grid-alt"></i>
+                <img src="../files/images/logo.png" class="img-fluid w-50">
             </button>
             <div class="sidebar-logo">
-                <a href="#">Crazy Cat Gang</a>
+                <a href="home.php">Crazy Cat Gang</a>
             </div>
         </div>
         <ul class="sidebar-nav">
             <li class="sidebar-item">
-                <a href="gestao.php" class="sidebar-link">
-                    <i class="lni lni-user"></i>
-                <span>Dashbord</span>
+                <a href="home.php" class="sidebar-link">
+                    <i class="lni lni-home"></i>
+                    <span>Home</span>
                 </a>
             </li>
+
+            <li class="sidebar-item">
+                <a href="tela1.php" class="sidebar-link">
+                    <img src="../files/images/loading_cat.svg" class="img-fluid">
+                    <span>Gatos</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="tela1.php" class="sidebar-link">
+                    <img src="../files/images/castracoes.png" class="img-fluid">
+                    <span>Gatos</span>
+                </a>
+            </li>
+
             <li class="sidebar-item">
                 <a href="tela1.php" class="sidebar-link">
                     <i class="lni lni-agenda"></i>
@@ -48,7 +63,7 @@
             </li>
         </ul>
         <div class="sidebar-footer">
-            <a href="index.php" class="sidebar-link">
+            <a href="../controllers/logout.php" class="sidebar-link">
                 <i class="lni lni-exit"></i>
                 <span>Logout</span>
             </a>

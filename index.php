@@ -132,7 +132,7 @@ include ("views/blades/header.php");
                         <p>Cadastre-se agora e faça parte dessa jornada incrível de adoção!<br><br></p>
                 </div>
                 <div id="botao">
-                    <a href="cadastro" class="text-button text-center"><button type="button"
+                    <a href="views/cadastro.php" class="text-button text-center"><button type="button"
                             class="btn btn-lg fw-bold mb-3" id="button2">Cadastre-se</button></a>
                 </div>
             </div>
@@ -186,7 +186,7 @@ include ("views/blades/header.php");
                     </p>
                 </div>
                 <div id="botao">
-                    <a href="#sobre" class="text-button text-center"><button type="button"
+                    <a href="views/cadastro.php" class="text-button text-center"><button type="button"
                             class="btn btn-lg fw-bold mb-3" id="button3">Quero ajudar!</button></a>
                 </div>
             </div>

@@ -8,16 +8,16 @@ function sanitizarEntrada($entrada) {
 function prepararExecutar($conexao, $query, $tipos, ...$parametros) {
     $stmt = mysqli_prepare($conexao, $query);
     if ($stmt === false) {
-        die("<script> alert('Erro na preparação da query.'); window.location='../cms/index.php'; </script>");
+        die("<script> alert('Erro na preparação da query.'); window.location='../views/login.php'; </script>");
     }
     mysqli_stmt_bind_param($stmt, $tipos, ...$parametros);
     $executado = mysqli_stmt_execute($stmt);
     if ($executado) {
         mysqli_stmt_close($stmt);
-        die("<script> alert('Usuário cadastrado com sucesso!'); window.location='../cms/index.php'; </script>");
+        header("location: ../views/analise.php");
     } else {
         mysqli_stmt_close($stmt);
-        die("<script> alert('Erro ao cadastrar o Usuário.'); window.location='../cms/index.php'; </script>");
+        die("<script> alert('Erro ao cadastrar o Usuário.'); window.location='../views/login.php'; </script>");
     }
 }
 
@@ -90,7 +90,5 @@ if ($tipo == "Administrativo") {
         $area_atuacao, $funcoes, $funcoes_interesse, $carona_disponibilidade, $razao, $certificado, 
         $disponibilidade, $observacao, $amor, $newsletter);
 }
-
-header("location:../cms/index.php");
 
 ?>

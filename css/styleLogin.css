@@ -145,6 +145,8 @@ p4 {
     .scrollable-right{
         position: relative;
         width: 100%;
+        margin-top: 20%;
+        height: 80vh;
         margin-left: 0;
     }
 
@@ -168,6 +170,5 @@ p4 {
         order: 2; /* Altera a ordem para que a barra lateral fixa fique abaixo */
         width: 100%;
         height: auto;
-        margin-top: 20px; /* Espaço opcional para separar do topo */
     }
 }
