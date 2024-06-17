@@ -19,9 +19,41 @@
 CREATE DATABASE IF NOT EXISTS `crazycatgang` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `crazycatgang`;
 
+-- Copiando estrutura para tabela crazycatgang.gato
+CREATE TABLE IF NOT EXISTS `gato` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` text NOT NULL,
+  `descricao` text NOT NULL,
+  `foto` text DEFAULT NULL,
+  `castrado` int(11) NOT NULL DEFAULT 0,
+  `alocado_clinica` int(11) DEFAULT 0,
+  `doacao` int(11) DEFAULT 0,
+  `data` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+
+-- Copiando dados para a tabela crazycatgang.gato: ~4 rows (aproximadamente)
+DELETE FROM `gato`;
+
+-- Copiando estrutura para tabela crazycatgang.resgate
+CREATE TABLE IF NOT EXISTS `resgate` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `data` timestamp NULL DEFAULT current_timestamp(),
+  `nome` text DEFAULT NULL,
+  `descricao` text DEFAULT NULL,
+  `endereco` text DEFAULT NULL,
+  `resgate_status` int(11) DEFAULT 0,
+  `foto` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+-- Copiando dados para a tabela crazycatgang.resgate: ~3 rows (aproximadamente)
+DELETE FROM `resgate`;
+
 -- Copiando estrutura para tabela crazycatgang.user
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `registrado` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `nome` text NOT NULL,
   `data_nascimento` date NOT NULL,
   `email` text NOT NULL,
@@ -52,12 +84,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `pets_castrados` text DEFAULT NULL,
   `bairro` text DEFAULT NULL,
   `endereco` text DEFAULT NULL,
-  `user_status` varchar(50) NOT NULL DEFAULT 'Em Análise',
+  `user_status` varchar(50) NOT NULL DEFAULT 'Em análise',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela crazycatgang.user: ~8 rows (aproximadamente)
+-- Copiando dados para a tabela crazycatgang.user: ~5 rows (aproximadamente)
 DELETE FROM `user`;
+INSERT INTO `user` (`id`, `registrado`, `nome`, `data_nascimento`, `email`, `celular`, `cpf`, `insta`, `senha`, `tipo`, `estudante`, `escolaridade`, `curso_graduacao`, `periodo_graduacao`, `area_atuacao`, `funcoes`, `funcoes_interesse`, `carona_disponibilidade`, `razao`, `certificado`, `disponibilidade`, `observacao`, `amor`, `newsletter`, `mora_em`, `pets`, `pets_quais`, `pets_vacinas`, `pets_testados`, `pets_castrados`, `bairro`, `endereco`, `user_status`) VALUES
+	(16, '2024-06-17 11:18:31', 'ADM', '1231-03-12', 'adm@gmail.com', '(13) 99648-6934', '123.123.123-31', '@vicruk_edits', '6c46f8e09b95837be28ef00ef721827a', 'Administrativo', 1, 'Ensino fundamental completo', 'Ciência da Computação', '1º', 'TI', 'Carona,Participação somente no dia do evento,Fotografia,Edição gráfica,Edição de vídeos,Programação e desenvolvimento de site,Produção de conteúdo,Administrativo', 'Edição de Vídeos', NULL, 'Porque eu gosto', 1, 'Toda hora', 'Nenhuma', 'Felícia é meu segundo nome', 1, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 'Aprovado');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
