@@ -16,10 +16,16 @@ include("../views/blades/sidebar.php");
     <h4>A sua tela principal, Alguns dados pendentes.</h4>
     <hr class="pb-4">
     <div class="container-fluid">
-        <div class="row g-3">
+        <div class="row g-2">
             <div class="col-6">
-                <div class="p-4 bg-white rounded-2">
-                    <h4 class="pb-4">Castrações Pendentes</h4>
+                <div class="p-4 rounded-4 home table-responsive">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="pb-4 text">Castrações Pendentes</h4>
+                        <a href="gestaoCastracoes.php" class="text-center botao-link">
+                            <img src="../files/images/castracoes.png" class="img-fluid tabela-link">
+                            <span>Castrações Pendentes</span>
+                        </a>
+                    </div>
                     <?php
                     if (isset($_POST["buscar"])) {
                         $varBuscar = $_POST["buscar"];
@@ -33,7 +39,7 @@ include("../views/blades/sidebar.php");
                     } else {
                     ?>
 
-                        <table class="table table-bordered table-striped table-hover justify-content-center">
+                        <table class="table table-bordered border-white table-striped table-hover justify-content-center">
                             <tr>
                                 <td class="text-center"><b>Nome</b></td>
                                 <td class="text-center"><b>Castrado</b></td>
@@ -49,15 +55,21 @@ include("../views/blades/sidebar.php");
                                     <td class="text-center"><b><?php if ($exibe['castrado'] == 1) { echo "Está castrado"; } else { echo "Não está castrado"; } ?></b></td>
                                     <td class="text-center"><b><?php if ($exibe['alocado_clinica'] == 1) { echo "Está alocado em clínica"; } else { echo "Não está alocado em clínica"; } ?></b></td>
                                     <td class="text-center"><b><?php if ($exibe['doacao'] == 1) { echo "Foi doado"; } else { echo "Não foi doado"; } ?></b></td>
-                                </tr></a>
+                                </tr>
                             <?php } ?>
                         </table>
                     <?php } ?>
                 </div>
             </div>
             <div class="col-6">
-                <div class="p-4 bg-white rounded-2">
-                    <h4 class="pb-4">Gatos Alocados em Clínicas</h4>
+                <div class="p-4 rounded-4 home table-responsive">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="pb-4 text">Gatos Alocados em Clínicas</h4>
+                        <a href="gestaoClinicas.php" class="text-center botao-link">
+                            <i class="lni lni-hospital"></i>
+                            <span>Clínicas</span>
+                        </a>
+                    </div>
                     <?php
                     if (isset($_POST["buscar"])) {
                         $varBuscar = $_POST["buscar"];
@@ -71,7 +83,7 @@ include("../views/blades/sidebar.php");
                     } else {
                         ?>
 
-                        <table class="table table-bordered table-striped table-hover justify-content-center">
+                        <table class="table table-bordered border-white table-striped table-hover justify-content-center">
                             <tr>
                                 <td class="text-center"><b>Nome</b></td>
                                 <td class="text-center"><b>Castrado</b></td>
@@ -87,15 +99,21 @@ include("../views/blades/sidebar.php");
                                     <td class="text-center"><b><?php if ($exibe['castrado'] == 1) { echo "Está castrado"; } else { echo "Não está castrado"; } ?></b></td>
                                     <td class="text-center"><b><?php if ($exibe['alocado_clinica'] == 1) { echo "Está alocado em clínica"; } else { echo "Não está alocado em clínica"; } ?></b></td>
                                     <td class="text-center"><b><?php if ($exibe['doacao'] == 1) { echo "Foi doado"; } else { echo "Não foi doado"; } ?></b></td>
-                                </tr></a>
+                                </tr>
                             <?php } ?>
                         </table>
                     <?php } ?>
                 </div>
             </div>
             <div class="col-6">
-                <div class="p-4 bg-white rounded-2">
-                    <h4 class="pb-4">Resgates</h4>
+                <div class="p-4 rounded-4 home table-responsive">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="pb-4 text">Resgates</h4>
+                        <a href="gestaoResgates.php" class="text-center botao-link">
+                            <i class="lni lni-ambulance"></i>
+                            <span>Resgate</span>
+                        </a>
+                    </div>
                     <?php
                         $query = mysqli_query($conexao, "SELECT * FROM resgate WHERE resgate_status = 0 ORDER BY id DESC LIMIT 4");
 
@@ -104,7 +122,7 @@ include("../views/blades/sidebar.php");
                     } else {
                         ?>
                         <div>
-                            <table class="table table-bordered table-striped table-hover justify-content-center">
+                            <table class="table table-bordered border-white table-striped table-hover justify-content-center">
                                 <tr>
                                     <td class="text-center"><b>Nome</b></td>
                                     <td class="text-center"><b>Descrição</b></td>
@@ -130,8 +148,14 @@ include("../views/blades/sidebar.php");
                 </div>
             </div>
             <div class="col-6">
-                <div class="p-4 bg-white rounded-2">
-                    <h4 class="pb-4">Voluntários Pendentes</h4>
+                <div class="p-4 rounded-4 home table-responsive">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="pb-4 text">Voluntários Pendentes</h4>
+                        <a href="gestaoVoluntarios.php" class=" botao-link">
+                            <i class="lni lni-user"></i>
+                            <span>Voluntarios</span>
+                        </a>
+                    </div>
                     <?php
                     if (isset($_POST["buscar"])) {
                         $varBuscar = $_POST["buscar"];
@@ -145,7 +169,7 @@ include("../views/blades/sidebar.php");
                     } else {
                         ?>
 
-                        <table class="table table-bordered table-striped table-hover justify-content-center">
+                        <table class="table table-bordered border-white table-striped table-hover justify-content-center">
                             <tr>
                                 <td class="text-center"><b>Nome</b></td>
                                 <td class="text-center"><b>Data de Nascimento</b></td>

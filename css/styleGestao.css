@@ -173,3 +173,26 @@ a.sidebar-link:hover {
     transform: rotate(45deg);
     transition: all .2s ease-out;
 }
+
+.home{
+    background-color: #e5e5e5;
+}
+
+.tabela-link{
+    width: 20px;
+    height: 20px;
+}
+
+.botao-link{
+    background-color: #FFCB04;
+    text-align: center;
+    align-items: center center;
+    padding: 20px;
+    border-color: #000;
+    border-width: 10px;
+    border-radius: 10px;
+}
+
+.botao-link:hover{
+    color: #000;
+}
