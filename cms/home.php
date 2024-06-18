@@ -21,9 +21,8 @@ include("../views/blades/sidebar.php");
                 <div class="p-4 rounded-4 home table-responsive">
                     <div class="d-flex justify-content-between">
                         <h4 class="pb-4 text">Castrações Pendentes</h4>
-                        <a href="gestaoCastracoes.php" class="text-center botao-link">
-                            <img src="../files/images/castracoes.png" class="img-fluid tabela-link">
-                            <span>Castrações Pendentes</span>
+                        <a href="gestaoCastracoes.php" class="botao-link">
+                            <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                     <?php
@@ -65,9 +64,8 @@ include("../views/blades/sidebar.php");
                 <div class="p-4 rounded-4 home table-responsive">
                     <div class="d-flex justify-content-between">
                         <h4 class="pb-4 text">Gatos Alocados em Clínicas</h4>
-                        <a href="gestaoClinicas.php" class="text-center botao-link">
-                            <i class="lni lni-hospital"></i>
-                            <span>Clínicas</span>
+                        <a href="gestaoClinicas.php" class="botao-link">
+                            <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                     <?php
@@ -109,9 +107,8 @@ include("../views/blades/sidebar.php");
                 <div class="p-4 rounded-4 home table-responsive">
                     <div class="d-flex justify-content-between">
                         <h4 class="pb-4 text">Resgates</h4>
-                        <a href="gestaoResgates.php" class="text-center botao-link">
-                            <i class="lni lni-ambulance"></i>
-                            <span>Resgate</span>
+                        <a href="gestaoResgates.php" class="botao-link">
+                            <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                     <?php
@@ -151,9 +148,8 @@ include("../views/blades/sidebar.php");
                 <div class="p-4 rounded-4 home table-responsive">
                     <div class="d-flex justify-content-between">
                         <h4 class="pb-4 text">Voluntários Pendentes</h4>
-                        <a href="gestaoVoluntarios.php" class=" botao-link">
-                            <i class="lni lni-user"></i>
-                            <span>Voluntarios</span>
+                        <a href="gestaoVoluntarios.php" class="botao-link">
+                            <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                     <?php

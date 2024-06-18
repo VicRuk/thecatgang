@@ -317,7 +317,7 @@ include ("blades/header3.php");
                         <input type="checkbox" id="participacao" name="funcoes[]" value="Participação somente no dia do evento">
                         <label for="participacao"> Participação somente no dia do evento</label><br>
                         <input type="checkbox" id="fotografia" name="funcoes[]" value="Fotografia">
-                        <label for="fotografia"> Carona</label><br>
+                        <label for="fotografia"> Fotografia</label><br>
                         <input type="checkbox" id="edicao_grafica" name="funcoes[]" value="Edição gráfica">
                         <label for="edicao_grafica"> Edição gráfica</label><br>
                         <input type="checkbox" id="edicao_evento" name="funcoes[]" value="Edição de vídeos">
@@ -588,7 +588,7 @@ include ("blades/header3.php");
                         <input type="checkbox" id="participacao" name="funcoes[]" value="Participação somente no dia do evento">
                         <label for="participacao"> Participação somente no dia do evento</label><br>
                         <input type="checkbox" id="fotografia" name="funcoes[]" value="Fotografia">
-                        <label for="fotografia"> Carona</label><br>
+                        <label for="fotografia"> Fotografia</label><br>
                         <input type="checkbox" id="edicao_grafica" name="funcoes[]" value="Edição gráfica">
                         <label for="edicao_grafica"> Edição gráfica</label><br>
                         <input type="checkbox" id="edicao_evento" name="funcoes[]" value="Edição de vídeos">

@@ -176,6 +176,7 @@ a.sidebar-link:hover {
 
 .home{
     background-color: #e5e5e5;
+    min-height: 300px;
 }
 
 .tabela-link{
@@ -184,13 +185,7 @@ a.sidebar-link:hover {
 }
 
 .botao-link{
-    background-color: #FFCB04;
-    text-align: center;
-    align-items: center center;
-    padding: 20px;
-    border-color: #000;
-    border-width: 10px;
-    border-radius: 10px;
+    font-weight: bold;
 }
 
 .botao-link:hover{
