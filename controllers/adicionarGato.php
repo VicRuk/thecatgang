@@ -1,56 +1,75 @@
 <?php
-include("../models/conexao.php");
+header('Content-Type: application/json');
 
-$varNomeGato = mysqli_real_escape_string($conexao, $_POST["nomeGato"]);
-$varDescricaoGato = mysqli_real_escape_string($conexao, $_POST["descricaoGato"]);
-$varCastrado = mysqli_real_escape_string($conexao, $_POST["castrado"]);
-$varAlocado = mysqli_real_escape_string($conexao, $_POST["alocado_clinica"]);
-$varDoado = mysqli_real_escape_string($conexao, $_POST["doacao"]);
+try {
+    include("../models/conexao.php");
 
-$diretorio = "../files/images/gatos";
-$arquivos = isset($_FILES['arquivo']) ? $_FILES['arquivo'] : FALSE;
+    $response = [
+        'success' => false,
+        'message' => ''
+    ];
 
-if ($arquivos && $arquivos['error'] == UPLOAD_ERR_OK) {
-    $varGatoImg = $arquivos['name'];
-    $temp = $arquivos['tmp_name'];
-    $extensao = strtolower(pathinfo($varGatoImg, PATHINFO_EXTENSION));
+    $varNomeGato = mysqli_real_escape_string($conexao, $_POST["nomeGato"]);
+    $varDescricaoGato = mysqli_real_escape_string($conexao, $_POST["descricaoGato"]);
+    $varCastrado = mysqli_real_escape_string($conexao, $_POST["castrado"]);
+    $varAlocado = mysqli_real_escape_string($conexao, $_POST["alocado_clinica"]);
+    $varDoado = mysqli_real_escape_string($conexao, $_POST["doacao"]);
 
-    if ($extensao == 'png') {
-        $varGatoImgRandom = md5(uniqid()) . "." . $extensao;
+    $diretorio = "../files/images/gatos";
+    $varGatoImg = null;
+
+    if (isset($_FILES['arquivo']) && $_FILES['arquivo']['error'] == UPLOAD_ERR_OK) {
+        $arquivo = $_FILES['arquivo'];
+        $temp = $arquivo['tmp_name'];
+        $extensao = strtolower(pathinfo($arquivo['name'], PATHINFO_EXTENSION));
+
+        if ($extensao !== 'png') {
+            throw new Exception('Apenas arquivos PNG são permitidos.');
+        }
+
+        $varGatoImgRandom = md5(uniqid()) . ".png";
         $destino = $diretorio . "/" . $varGatoImgRandom;
 
-        if (move_uploaded_file($temp, $destino)) {
-            $varGatoImg = $varGatoImgRandom;
-        } else {
-            echo "<script>alert('Erro ao mover o arquivo.'); window.location='../cms/gestaoGatos.php';</script>";
-            exit();
+        if (!move_uploaded_file($temp, $destino)) {
+            throw new Exception('Erro ao fazer upload do arquivo.');
         }
-    } else {
-        echo "<script>alert('Insira apenas arquivos PNG.'); window.location='../cms/gestaoGatos.php';</script>";
-        exit();
+
+        $varGatoImg = $varGatoImgRandom;
     }
-} else {
-    $varGatoImg = NULL;
+
+    $query = "INSERT INTO gato (nome, descricao, foto, castrado, alocado_clinica, doacao) 
+              VALUES (?, ?, ?, ?, ?, ?)";
+              
+    $stmt = mysqli_prepare($conexao, $query);
+    
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, 'ssssss', 
+            $varNomeGato, 
+            $varDescricaoGato, 
+            $varGatoImg,
+            $varCastrado,
+            $varAlocado,
+            $varDoado
+        );
+
+        if (mysqli_stmt_execute($stmt)) {
+            $response['success'] = true;
+            $response['message'] = 'Gato cadastrado com sucesso!';
+        } else {
+            throw new Exception('Erro ao cadastrar o gato no banco de dados.');
+        }
+        
+        mysqli_stmt_close($stmt);
+    } else {
+        throw new Exception('Erro ao preparar a query.');
+    }
+
+} catch (Exception $e) {
+    $response['message'] = $e->getMessage();
+} finally {
+    if (isset($conexao)) {
+        mysqli_close($conexao);
+    }
+    echo json_encode($response);
 }
-
-$query = "INSERT INTO gato (nome, descricao, foto, castrado, alocado_clinica, doacao) 
-          VALUES ('$varNomeGato', '$varDescricaoGato', ";
-
-if ($varGatoImg !== NULL) {
-    $query .= "'$varGatoImg', ";
-} else {
-    $query .= "NULL, ";
-}
-
-$query .= "'$varCastrado', '$varAlocado', '$varDoado')";
-
-mysqli_query($conexao, $query);
-
-if (mysqli_affected_rows($conexao) > 0) {
-    echo "<script>alert('Gato cadastrado com sucesso!'); window.location='../cms/gestaoGatos.php';</script>";
-} else {
-    echo "<script>alert('Erro ao cadastrar o gato.'); window.location='../cms/gestaoGatos.php';</script>";
-}
-
-mysqli_close($conexao);
 ?>

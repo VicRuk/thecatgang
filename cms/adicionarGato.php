@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(empty($_SESSION)) {
+    header("Location: ../views/login.php");
+    exit();
+}
 include ("../models/conexao.php");
 include ("../views/blades/header4.php");
 include ("../views/blades/sidebar.php");
@@ -10,7 +15,9 @@ include ("../views/blades/sidebar.php");
         <div class="col-12 col-sm-5 d-flex justify-content-center align-items-center">
             <img src="../files/images/cathand.png" class="img-fluid">
         </div>
-        <form name="upload" class="col-12 col-sm-7" enctype="multipart/form-data" action="../controllers/adicionarGato.php" method="post">
+        <form id="catForm" name="upload" class="col-12 col-sm-7" enctype="multipart/form-data">
+            <div id="alertMessage" class="alert d-none" role="alert"></div>
+            
             <p class="mb-1">Nome do Gato</p>
             <input class="form-control" type="text" name="nomeGato" required placeholder="Nome do Gato"><br>
 
@@ -20,31 +27,25 @@ include ("../views/blades/sidebar.php");
 
             <div class="mb-3">
                 <p>Castrado</p>
-                <input type="radio" id="castrado_sim" name="castrado" value="1"
-                    required>
+                <input type="radio" id="castrado_sim" name="castrado" value="1" required>
                 <label>Sim</label><br>
-                <input type="radio" id="castrado_nao" name="castrado"
-                    value="0" required>
+                <input type="radio" id="castrado_nao" name="castrado" value="0" required>
                 <label>Não</label><br>
             </div>
 
             <div class="mb-3">
                 <p>Alocado em Clínica</p>
-                <input type="radio" id="alocado_sim" name="alocado_clinica" value="1"
-                    required>
+                <input type="radio" id="alocado_sim" name="alocado_clinica" value="1" required>
                 <label>Sim</label><br>
-                <input type="radio" id="alocado_nao" name="alocado_clinica"
-                    value="0" required>
+                <input type="radio" id="alocado_nao" name="alocado_clinica" value="0" required>
                 <label>Não</label><br>
             </div>
 
             <div class="mb-3">
                 <p>Doado?</p>
-                <input type="radio" id="doacao_sim" name="doacao" value="1"
-                    required>
+                <input type="radio" id="doacao_sim" name="doacao" value="1" required>
                 <label>Sim</label><br>
-                <input type="radio" id="doado_nao" name="doacao"
-                    value="0" required>
+                <input type="radio" id="doado_nao" name="doacao" value="0" required>
                 <label>Não</label><br>
             </div>
 
@@ -53,16 +54,79 @@ include ("../views/blades/sidebar.php");
             <div class="row">
                 <div class="col-sm-12">
                     <input class="fw-bold form-control custom-file-input" type="file" name="arquivo"
-                        multiple="multiple" /><br>
+                        accept=".png" /><br>
                 </div>
             </div>
 
-            <input class="btn btn-success fw-bold" id="button1" type="submit" value="Adicionar Gato">
+            <button type="submit" class="btn btn-success fw-bold" id="submitButton">
+                Adicionar Gato
+                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+            </button>
         </form>
     </div>
-
 </div>
 
-<?php
-include ("../views/blades/footer3.php");
-?>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('catForm');
+    const alertMessage = document.getElementById('alertMessage');
+    const submitButton = document.getElementById('submitButton');
+    const spinner = submitButton.querySelector('.spinner-border');
+
+    function showAlert(message, type) {
+        alertMessage.textContent = message;
+        alertMessage.className = `alert alert-${type}`;
+        alertMessage.classList.remove('d-none');
+    }
+
+    function setLoading(loading) {
+        submitButton.disabled = loading;
+        spinner.classList.toggle('d-none', !loading);
+    }
+
+    async function uploadCat(formData) {
+        try {
+            const response = await fetch('../controllers/adicionarGato.php', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+            
+            if (result.success) {
+                console.log("Gato cadastrado com sucesso!");
+                setTimeout(() => {
+                    window.location.href = '../cms/gestaoGatos.php';
+                }, 1500);
+            } else {
+                throw new Error(result.message || 'Erro ao cadastrar o gato');
+            }
+        } catch (error) {
+            console.log(error.message, 'danger');
+            setLoading(false);
+        }
+    }
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        setLoading(true);
+        alertMessage.classList.add('d-none');
+
+        const formData = new FormData(this);
+        const fileInput = form.querySelector('input[type="file"]');
+        
+        if (fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            if (file.type !== 'image/png') {
+                showAlert('Por favor, insira apenas arquivos PNG.', 'danger');
+                setLoading(false);
+                return;
+            }
+        }
+
+        await uploadCat(formData);
+    });
+});
+</script>
+
+<?php include ("../views/blades/footer3.php"); ?>

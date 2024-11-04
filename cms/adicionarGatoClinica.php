@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(empty($_SESSION)) {
+    header("Location: ../views/login.php");
+    exit();
+}
+
 include ("../models/conexao.php");
 include ("../views/blades/header4.php");
 include ("../views/blades/sidebar.php");

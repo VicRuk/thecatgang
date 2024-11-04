@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(empty($_SESSION)) {
+    header("Location: ../views/login.php");
+    exit();
+}
 include ("../models/conexao.php");
 include ("../views/blades/header4.php");
 include ("../views/blades/sidebar.php");
@@ -13,12 +18,12 @@ $query = mysqli_query($conexao, "SELECT * FROM gato WHERE id = $idb");
         $stringDate = $Data -> format('d/m/Y, H:i:s');
     ?>
     <a href="gestaoGatos.php"><i class="lni lni-chevron-left text-secondary mb-4" id="back"></i></a>
-    <h1>Editar <?php echo $exibe[1] ?></h1>
+    <h1>Editar <?php echo htmlspecialchars($exibe[1]) ?></h1>
     <div class="row">
         <div class="col-12 col-sm-5 d-flex justify-content-center align-items-center">
-            <img class="img-fluid" src="<?php echo $exibe['foto'] ? "../files/images/gatos/{$exibe['foto']}" : "../files/images/cathand.png"; ?>">
+            <img class="img-fluid" src="<?php echo $exibe['foto'] ? "../files/images/gatos/".htmlspecialchars($exibe['foto']) : "../files/images/cathand.png"; ?>">
         </div>
-        <form name="atualizar" class="col-12 col-sm-7" enctype="multipart/form-data" action="../controllers/atualizarGato.php" method="post">
+        <form id="updateCatForm" name="atualizar" class="col-12 col-sm-7" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo $exibe[0] ?>">
             <p class="mb-1">Nome do Gato</p>
             <input class="form-control" type="text" name="nomeGato" required value="<?php echo $exibe[1]?>" placeholder="Nome do Gato"><br>
@@ -65,14 +70,116 @@ $query = mysqli_query($conexao, "SELECT * FROM gato WHERE id = $idb");
             </div>
             <div class="mb-2"><p2 class="text-muted">Gato adicionado em <?php echo $stringDate?></p2></div>
             <div class="d-flex justify-content-between">
-                <input class="btn fw-bold" id="button1" type="submit" value="Editar Gato">
-                <a class="btn btn-danger d-flex justify-content-center" href="../controllers/deletarGato.php?idb=<?php echo $exibe[0]?>">Excluir Gato</a>
+                <button type="submit" class="btn fw-bold" id="button1">Editar Gato</button>
+                <button type="button" class="btn btn-danger" id="deleteCatBtn">Excluir Gato</button>
             </div>
         </form>
     </div>
     <?php } ?>
 </div>
 
-<?php
-include ("../views/blades/footer3.php");
-?>
+<script>
+document.getElementById('updateCatForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const loadingSpinner = document.createElement('div');
+    loadingSpinner.className = 'loading-spinner';
+    
+    try {
+        this.appendChild(loadingSpinner);
+        const formData = new FormData(this);
+        const response = await updateCat(formData);
+        
+        if (response.success) {
+            alert('Gato atualizado com sucesso!');
+            window.location.href = '../cms/gestaoGatos.php';
+        } else {
+            throw new Error(response.message || 'Erro ao atualizar o gato.');
+        }
+    } catch (error) {
+        alert(error.message);
+    } finally {
+        if (loadingSpinner) {
+            loadingSpinner.remove();
+        }
+        this.reset();
+    }
+});
+
+document.getElementById('deleteCatBtn').addEventListener('click', async function() {
+    const loadingSpinner = document.createElement('div');
+    loadingSpinner.className = 'loading-spinner';
+    
+    try {
+        if (confirm('Tem certeza que deseja excluir este gato?')) {
+            this.appendChild(loadingSpinner);
+            const catId = document.querySelector('input[name="id"]').value;
+            const response = await deleteCat(catId);
+            
+            if (response.success) {
+                window.location.href = '../cms/gestaoGatos.php';
+            } else {
+                throw new Error(response.message || 'Erro ao excluir o gato.');
+            }
+        }
+    } catch (error) {
+        alert(error.message);
+    } finally {
+        if (loadingSpinner) {
+            console.log("Finalizando");
+        }
+    }
+});
+
+async function updateCat(formData) {
+    let controller;
+    try {
+        controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+        
+        const response = await fetch('../controllers/atualizarGato.php', {
+            method: 'POST',
+            body: formData,
+            signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        return await response.json();
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            throw new Error('A requisição excedeu o tempo limite.');
+        }
+        throw new Error('Erro na comunicação com o servidor.');
+    } finally {
+        if (controller) {
+            console.log("Finalizando");
+        }
+    }
+}
+
+async function deleteCat(catId) {
+    let controller;
+    try {
+        controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+        
+        const response = await fetch(`../controllers/deletarGato.php?idb=${catId}`, {
+            method: 'GET',
+            signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        return await response.json();
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            throw new Error('A requisição excedeu o tempo limite.');
+        }
+        throw new Error('Erro na comunicação com o servidor.');
+    } finally {
+        if (controller) {
+            console.log("Finalizando");
+        }
+    }
+}
+</script>
+
+<?php include ("../views/blades/footer3.php"); ?>

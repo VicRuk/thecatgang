@@ -23,29 +23,26 @@ include ("blades/header3.php");
                     match bem legal para uma relação de longo prazo de muito amor com os gatinhos que precisam de
                     ajuda.<br><br></p>
                 <button type="button" class="btn btn-primary" id="button1" onclick="nextPart(2)">Continue</button>
-                </form>
             </div>
-            <form class="w-100" id="formulario" action="../controllers/cadastrarVoluntario.php" method="POST"
-                onsubmit="return validateForm();">
+            <form class="w-100" id="formulario" action="../controllers/cadastrarVoluntario.php" method="POST">
                 <div class="form-part p-3" id="part2">
                     <h2>Parte 1:</h2>
                     <h1 class="mb-3">Informações Básicas</h1>
                     <div class="mb-3">
                         <p>Nome Completo</p>
-                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo"
-                            required>
+                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo">
                     </div>
                     <div class="mb-3">
                         <p>Email</p>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                     </div>
                     <div class="mb-3">
                         <p>Data de Nascimento</p>
-                        <input id="data" class="form-control" name="data_nascimento" type="date" required />
+                        <input id="data" class="form-control" name="data_nascimento" type="date"/>
                     </div>
                     <div class="mb-3">
                         <p>CPF</p>
-                        <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF" required>
+                        <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF">
                     </div>
                     <div class="mb-3">
                         <p>Qual o seu @?</p>
@@ -116,8 +113,6 @@ include ("blades/header3.php");
                         <button type="button" class="btn btn1" onclick="nextPart(4)" id="continueButton"
                             disabled>Continue</button>
                     </div>
-
-
                 </div>
                 <div class="form-part p-3" id="part4">
                     <div id="additionalInfo"></div>
@@ -126,124 +121,152 @@ include ("blades/header3.php");
         </div>
     </div>
 </div>
+
 <script>
     let currentPart = 1;
     let volunteerType = '';
+
+    // Formatação do telefone
     document.getElementById('phone').addEventListener('input', function (e) {
         var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
         e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
     });
+
+    // Formatação do CPF
     document.getElementById('cpf').addEventListener('input', function (e) {
         var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
         e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + (x[4] ? '-' + x[4] : '');
     });
+
+    // Validação de email
     function validateEmail(email) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
     }
 
-    function validarSenhas(event) {
-        var tipo = document.querySelector('input[name="tipo"]').value;
-
-        if (tipo === "Administrativo") {
-            var senha = document.getElementById("senha").value;
-            var senhaC = document.getElementById("senhaC").value;
-            var erroSenha = document.getElementById("erro-senha");
-            var regexSenha = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
-        
-            if (senha !== senhaC) {
-                erroSenha.style.display = "block";
-                event.preventDefault();
-            } else if (!regexSenha.test(senha)) {
-                alert('A senha deve conter pelo menos 8 caracteres, incluindo pelo menos uma letra maiúscula e um número.');
-                event.preventDefault();
-            } else {
-                erroSenha.style.display = "none";
-            }
-
-            for (var i = 0; i < checkboxes.length; i++) {
-                if (checkboxes[i].checked) {
-                    isChecked = true;
-                    break;
-                }
-            }
-
-            if (!isChecked) {
-                alert('Selecione pelo menos uma função.');
-                event.preventDefault();
-            }
-        }
-        if (tipo === "Carona") {
-            var checkboxes = document.getElementsByName('funcoes[]');
-            var isChecked = false;
-
-            for (var i = 0; i < checkboxes.length; i++) {
-                if (checkboxes[i].checked) {
-                    isChecked = true;
-                    break;
-                }
-            }
-
-            if (!isChecked) {
-                alert('Selecione pelo menos uma função.');
-                event.preventDefault();
-            }
-        }
-    }
-
-
-    document.addEventListener("DOMContentLoaded", function () {
-        var form = document.getElementById("formulario");
-        form.addEventListener("submit", validarSenhas);
-    });
-
-    function nextPart(part) {
-        if (currentPart === 2) {
+    // Função principal de validação usando Promise
+    function validateForm() {
+        return new Promise((resolve, reject) => {
+            // Validações básicas
             const nome = document.getElementById('nome').value;
             const email = document.getElementById('email').value;
             const data = document.getElementById('data').value;
             const phone = document.getElementById('phone').value;
             const cpf = document.getElementById('cpf').value;
+            const tipo = document.querySelector('input[name="tipo"]')?.value;
 
-            if (!nome || !email || !data || !phone || phone.length !== 15 || cpf.length !== 14 || !validateEmail(email)) {
-                alert('Por favor, preencha corretamente todos os campos.');
-                return;
+            const errors = [];
+
+            // Validações gerais
+            if (!nome) errors.push("Nome é obrigatório");
+            if (!email || !validateEmail(email)) errors.push("Email inválido");
+            if (!data) errors.push("Data de nascimento é obrigatória");
+            if (!phone || phone.length !== 15) errors.push("Telefone inválido");
+            if (!cpf || cpf.length !== 14) errors.push("CPF inválido");
+
+            // Validações específicas por tipo de voluntário
+            if (tipo === "Administrativo") {
+                const senha = document.getElementById("senha")?.value;
+                const senhaC = document.getElementById("senhaC")?.value;
+                const regexSenha = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+                if (senha !== senhaC) {
+                    errors.push("As senhas não coincidem");
+                }
+                if (!regexSenha.test(senha)) {
+                    errors.push("A senha deve conter pelo menos 8 caracteres, incluindo uma letra maiúscula e um número");
+                }
+
+                // Validação de funções selecionadas
+                const checkboxes = document.getElementsByName('funcoes[]');
+                let isChecked = false;
+                for (let checkbox of checkboxes) {
+                    if (checkbox.checked) {
+                        isChecked = true;
+                        break;
+                    }
+                }
+                if (!isChecked) {
+                    errors.push("Selecione pelo menos uma função");
+                }
             }
+
+            if (tipo === "Carona") {
+                const checkboxes = document.getElementsByName('funcoes[]');
+                let isChecked = false;
+                for (let checkbox of checkboxes) {
+                    if (checkbox.checked) {
+                        isChecked = true;
+                        break;
+                    }
+                }
+                if (!isChecked) {
+                    errors.push("Selecione pelo menos uma função");
+                }
+            }
+
+            // Resolve ou rejeita a Promise baseado nas validações
+            if (errors.length > 0) {
+                reject(errors);
+            } else {
+                resolve("Formulário validado com sucesso!");
+            }
+        });
+    }
+
+    // Funções de callback para a Promise
+    function onValidationSuccess(message) {
+        console.log("Sucesso:", message);
+        document.getElementById('formulario').submit();
+    }
+
+    function onValidationError(errors) {
+        console.error("Erros encontrados:", errors);
+        alert(errors.join('\n'));
+    }
+
+    function onValidationComplete() {
+        console.log("Processo de validação finalizado");
+    }
+
+    // Navegação entre partes do formulário
+    function nextPart(part) {
+        if (currentPart === 2) {
+            validateForm()
+                .then(() => {
+                    animateTransition(currentPart, part, 'next');
+                })
+                .catch(onValidationError);
+        } else {
+            animateTransition(currentPart, part, 'next');
         }
-
-        const currentElement = document.getElementById(`part${currentPart}`);
-        const nextElement = document.getElementById(`part${part}`);
-
-        currentElement.classList.add('exit-left');
-        nextElement.classList.add('enter-right');
-        nextElement.style.display = 'block';
-
-        setTimeout(() => {
-            currentElement.classList.remove('active', 'exit-left');
-            nextElement.classList.remove('enter-right');
-            nextElement.classList.add('active');
-            currentElement.style.display = 'none';
-            currentPart = part;
-        }, 500);
     }
 
     function prevPart(part) {
-        const currentElement = document.getElementById(`part${currentPart}`);
-        const prevElement = document.getElementById(`part${part}`);
+        animateTransition(currentPart, part, 'prev');
+    }
 
-        currentElement.classList.add('exit-right');
-        prevElement.classList.add('enter-left');
-        prevElement.style.display = 'block';
+    function animateTransition(from, to, direction) {
+        const currentElement = document.getElementById(`part${from}`);
+        const nextElement = document.getElementById(`part${to}`);
+        
+        const exitClass = direction === 'next' ? 'exit-left' : 'exit-right';
+        const enterClass = direction === 'next' ? 'enter-right' : 'enter-left';
+
+        currentElement.classList.add(exitClass);
+        nextElement.classList.add(enterClass);
+        nextElement.style.display = 'block';
 
         setTimeout(() => {
-            currentElement.classList.remove('active', 'exit-right');
-            prevElement.classList.remove('enter-left');
-            prevElement.classList.add('active');
+            currentElement.classList.remove('active', exitClass);
+            nextElement.classList.remove(enterClass);
+            nextElement.classList.add('active');
             currentElement.style.display = 'none';
-            currentPart = part;
+            currentPart = to;
         }, 500);
     }
 
+    // Configuração do tipo de voluntário
     function setVolunteerType(type) {
         volunteerType = type;
         document.getElementById('continueButton').disabled = false;
@@ -254,12 +277,13 @@ include ("blades/header3.php");
 
         document.querySelector(`.volunteer-container:nth-child(${type})`).classList.add('selected');
 
-        document.getElementById('additionalInfo').innerHTML = '';
+        const additionalInfo = document.getElementById('additionalInfo');
+        additionalInfo.innerHTML = '';
 
-        if (volunteerType === 1) {
-            document.getElementById('additionalInfo').innerHTML = `
-                    <input type="hidden" name="tipo" value="Administrativo">
-                    <h2>Parte 3:</h2>
+        if (type === 1) {
+            additionalInfo.innerHTML = `
+                <input type="hidden" name="tipo" value="Administrativo">
+                <h2>Parte 3:</h2>
                     <h1 class="mb-3">Diga mais sobre você!</h1>
                     <div class="mb-3">
                         <p>É estudante?</p>
@@ -418,18 +442,15 @@ include ("blades/header3.php");
                         <input type="radio" id="news_nao" name="newsletter" value="0" required>
                         <label>Não</label><br>
                     </div>
-
-                    <div class="d-flex justify-content-between">
-                            <button type="button" class="btn btn-secondary" id="button2"
-                                onclick="prevPart(3)">Voltar</button>
-                                <input class="fw-bold btn btn-success" id="button3" type="submit" value="Cadastrar">
-                        </div>
-                    
-                `;
-        } else if (volunteerType === 2) {
-            document.getElementById('additionalInfo').innerHTML = `
-                    <input type="hidden" name="tipo" value="Lar Voluntário">
-                    <h1>Termos e condições - Lar Temporário</h1>
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-secondary" onclick="prevPart(3)">Voltar</button>
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                </div>
+            `;
+        } else if (type === 2) {
+            additionalInfo.innerHTML = `
+                <input type="hidden" name="tipo" value="Lar Voluntário">
+                <h1>Termos e condições - Lar Temporário</h1>
                     <p>Ser lar temporário parece uma tarefa fácil, mas não é!<br><br></p>
                     <p><b>PROSSIGA COM SUA INSCRIÇÃO SE:</b></p>
                     <p>- <b>sua casa possui tela nas janelas e não existe possíveis rotas de fuga</b>: os gatinhos quando chegam assustados procuram qualquer buraco pra poder escapar: churrasqueiras, frestas de janelas, ralos etc.<br><br>
@@ -521,16 +542,15 @@ include ("blades/header3.php");
                         <input type="radio" id="news_nao" name="newsletter" value="0" required>
                         <label>Não</label><br>
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <button type="button" class="btn btn-secondary" id="button2"
-                             onclick="prevPart(3)">Voltar</button>
-                        <input class="fw-bold btn btn-success" id="button3" type="submit" value="Cadastrar">
-                    </div>
-                `;
-        } else if (volunteerType === 3) {
-            document.getElementById('additionalInfo').innerHTML = `
-                    <input type="hidden" name="tipo" value="Carona">
-                    <h2>Parte 3:</h2>
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-secondary" onclick="prevPart(3)">Voltar</button>
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                </div>
+            `;
+        } else if (type === 3) {
+            additionalInfo.innerHTML = `
+                <input type="hidden" name="tipo" value="Carona">
+                <h2>Parte 3:</h2>
                     <h1 class="mb-3">Diga mais sobre você!</h1>
                     <div class="mb-3">
                         <p>É estudante?</p>
@@ -692,16 +712,84 @@ include ("blades/header3.php");
                         <input type="radio" id="news_nao" name="newsletter" value="0" required>
                         <label>Não</label><br>
                     </div>
-
-                    <div class="d-flex justify-content-between">
-                            <button type="button" class="btn btn-secondary" id="button2"
-                                onclick="prevPart(3)">Voltar</button>
-                            <input class="fw-bold btn btn-success" id="button3" type="submit" value="Cadastrar">
-                        </div>
-                `;
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-secondary" onclick="prevPart(3)">Voltar</button>
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                </div>
+            `;
         }
+    }
+
+    document.getElementById('formulario').addEventListener('submit', function(event) {
+        event.preventDefault();
+        console.log("Iniciando validação final do formulário...");
+        
+        validateForm()
+            .then(onValidationSuccess)
+            .catch(onValidationError)
+            .finally(onValidationComplete);
+    });
+
+    function validarSenhas() {
+        return new Promise((resolve, reject) => {
+            const tipo = document.querySelector('input[name="tipo"]').value;
+            
+            if (tipo === "Administrativo") {
+                const senha = document.getElementById("senha").value;
+                const senhaC = document.getElementById("senhaC").value;
+                const regexSenha = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+                
+                if (senha !== senhaC) {
+                    reject("As senhas não coincidem");
+                } else if (!regexSenha.test(senha)) {
+                    reject("A senha deve conter pelo menos 8 caracteres, incluindo pelo menos uma letra maiúscula e um número");
+                } else {
+                    resolve("Senhas validadas com sucesso");
+                }
+            } else {
+                resolve("Não é necessário validar senhas para este tipo de voluntário");
+            }
+        });
+    }
+
+    function validarFuncoes() {
+        return new Promise((resolve, reject) => {
+            const tipo = document.querySelector('input[name="tipo"]').value;
+            
+            if (tipo === "Administrativo" || tipo === "Carona") {
+                const checkboxes = document.getElementsByName('funcoes[]');
+                let isChecked = false;
+                
+                for (let checkbox of checkboxes) {
+                    if (checkbox.checked) {
+                        isChecked = true;
+                        break;
+                    }
+                }
+                
+                if (!isChecked) {
+                    reject("Selecione pelo menos uma função");
+                } else {
+                    resolve("Funções validadas com sucesso");
+                }
+            } else {
+                resolve("Não é necessário validar funções para este tipo de voluntário");
+            }
+        });
+    }
+
+    function showError(message) {
+        alert(message);
+    }
+
+    function showSuccess(message) {
+        console.log(message);
+    }
+
+    function clearErrors() {
+        const errorElements = document.querySelectorAll('.error-message');
+        errorElements.forEach(element => element.remove());
     }
 </script>
 </body>
-
 </html>
