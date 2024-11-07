@@ -27,7 +27,7 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-light px-2">
         <div class="container-fluid" id="nav-content">
             <div class="d-flex flex-column flex-lg-row align-items-lg-center">
-                <a href="#" class="logo-link"><img src="../files/images/logo.png" class="img-fluid"
+                <a href="../index.php" class="logo-link"><img src="../files/images/logo.png" class="img-fluid"
                         style="width: 100px !important; "></a>
             </div>
         </div>

@@ -99,6 +99,117 @@ include ("../views/blades/sidebar.php");
     </div>
 </div>
 
+<script>
+
+let currentRequest = null;
+const debounceTimeout = 300;
+let debounceTimer = null;
+
+function showAlert(message, type) {
+    const alertElement = document.getElementById('alertMessage');
+    alertElement.textContent = message;
+    alertElement.className = `alert alert-${type}`;
+    alertElement.classList.remove('d-none');
+    setTimeout(() => alertElement.classList.add('d-none'), 3000);
+}
+
+function setLoading(loading) {
+    const spinner = document.getElementById('loadingSpinner');
+    spinner.classList.toggle('d-none', !loading);
+}
+
+function createVoluntariosTable(voluntarios) {
+    if (voluntarios.length === 0) {
+        return '<p class="text-center">Nenhum resultado encontrado</p>';
+    }
+
+    return `
+        <table class="table table-bordered table-striped table-hover justify-content-center">
+            <tr>
+                <td class="text-center"><b>Nome</b></td>
+                <td class="text-center"><b>Data de Nascimento</b></td>
+                <td class="text-center"><b>Email</b></td>
+                <td class="text-center"><b>Celular</b></td>
+                <td class="text-center"><b>Visualizar</b></td>
+            </tr>
+            ${voluntarios.map(voluntario => `
+                <tr>
+                    <td class="text-center"><b>${voluntario.nome.substring(0, 30)}</b></td>
+                    <td class="text-center"><b>${voluntario.data_nascimento}</b></td>
+                    <td class="text-center"><b>${voluntario.email.substring(0, 30)}</b></td>
+                    <td class="text-center"><b>${voluntario.celular}</b></td>
+                    <td class="text-center">
+                        <a class="btn btn-primary d-flex justify-content-center" href="visualizarVoluntario.php?idb=${voluntario.id}">Visualizar</a>
+                    </td>
+                </tr>
+            `).join('')}
+        </table>
+    `;
+}
+
+async function fetchVoluntarios(search = '') {
+    if (currentRequest) {
+        currentRequest.abort();
+    }
+
+    try {
+        const controller = new AbortController();
+        currentRequest = controller;
+
+        const response = await fetch('../controllers/buscarVoluntariosAdmin.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ busca: search }),
+            signal: controller.signal
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao buscar dados');
+        }
+
+        const data = await response.json();
+
+        if (data.success) {
+            document.getElementById('tableContainer').innerHTML = createVoluntariosTable(data.voluntarios);
+        } else {
+            throw new Error(data.message || 'Erro ao carregar os dados');
+        }
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            return;
+        }
+        showAlert(error.message, 'danger');
+    } finally {
+        setLoading(false);
+        currentRequest = null;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const clearButton = document.getElementById('clearSearch');
+
+    fetchVoluntarios();
+
+    searchInput.addEventListener('input', function(e) {
+        clearTimeout(debounceTimer);
+        setLoading(true);
+        
+        debounceTimer = setTimeout(() => {
+            fetchVoluntarios(e.target.value);
+        }, debounceTimeout);
+    });
+
+    clearButton.addEventListener('click', function() {
+        searchInput.value = '';
+        fetchVoluntarios();
+    });
+});
+
+</script>
+
 <?php
 include ("../views/blades/footer3.php");
 ?>

@@ -99,6 +99,116 @@ include ("../views/blades/sidebar.php");
         <?php } ?>
     </div>
 </div>
+<script>
+let currentRequest = null;
+const debounceTimeout = 300;
+let debounceTimer = null;
+
+function showAlert(message, type) {
+    const alertElement = document.getElementById('alertMessage');
+    alertElement.textContent = message;
+    alertElement.className = `alert alert-${type}`;
+    alertElement.classList.remove('d-none');
+    setTimeout(() => alertElement.classList.add('d-none'), 3000);
+}
+
+function setLoading(loading) {
+    const spinner = document.getElementById('loadingSpinner');
+    spinner.classList.toggle('d-none', !loading);
+}
+
+function createCaronaTable(caronas) {
+    if (caronas.length === 0) {
+        return '<p class="text-center">Nenhum resultado encontrado</p>';
+    }
+
+    return `
+        <table class="table table-bordered table-striped table-hover justify-content-center">
+            <tr>
+                <td class="text-center"><b>Nome</b></td>
+                <td class="text-center"><b>Data de Nascimento</b></td>
+                <td class="text-center"><b>Email</b></td>
+                <td class="text-center"><b>Celular</b></td>
+                <td class="text-center"><b>Status</b></td>
+                <td class="text-center"><b>Visualizar</b></td>
+            </tr>
+            ${caronas.map(caronas => `
+                <tr>
+                    <td class="text-center"><b>${caronas.nome.substring(0, 30)}</b></td>
+                    <td class="text-center"><b>${caronas.data_nascimento}</b></td>
+                    <td class="text-center"><b>${caronas.email.substring(0, 30)}</b></td>
+                    <td class="text-center"><b>${caronas.celular}</b></td>
+                    <td class="text-center"><b>${caronas.user_status}</b></td>
+                    <td class="text-center">
+                        <a class="btn btn-primary d-flex justify-content-center" href="visualizarCarona.php?idb=${caronas.id}">Visualizar</a>
+                    </td>
+                </tr>
+            `).join('')}
+        </table>
+    `;
+}
+
+async function fetchCaronas(search = '') {
+    if (currentRequest) {
+        currentRequest.abort();
+    }
+
+    try {
+        const controller = new AbortController();
+        currentRequest = controller;
+
+        const response = await fetch('../controllers/buscarCaronas.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ busca: search }),
+            signal: controller.signal
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao buscar dados');
+        }
+
+        const data = await response.json();
+        
+        if (data.success) {
+            document.getElementById('tableContainer').innerHTML = createCaronaTable(data.caronas);
+        } else {
+            throw new Error(data.message || 'Erro ao carregar os dados');
+        }
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            return;
+        }
+        showAlert(error.message, 'danger');
+    } finally {
+        setLoading(false);
+        currentRequest = null;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const clearButton = document.getElementById('clearSearch');
+
+    fetchCaronas();
+
+    searchInput.addEventListener('input', function(e) {
+        clearTimeout(debounceTimer);
+        setLoading(true);
+        
+        debounceTimer = setTimeout(() => {
+            fetchCaronas(e.target.value);
+        }, debounceTimeout);
+    });
+
+    clearButton.addEventListener('click', function() {
+        searchInput.value = '';
+        fetchCaronas();
+    });
+});
+</script>
 
 <?php
 include ("../views/blades/footer3.php");

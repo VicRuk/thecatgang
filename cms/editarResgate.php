@@ -57,6 +57,109 @@ $query = mysqli_query($conexao, "SELECT * FROM resgate WHERE id = $idb");
     </div>
     <?php } ?>
 </div>
+<script>
+document.getElementById('updateCatForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const loadingSpinner = document.createElement('div');
+    loadingSpinner.className = 'loading-spinner';
+    
+    try {
+        this.appendChild(loadingSpinner);
+        const formData = new FormData(this);
+        const response = await updateCat(formData);
+        
+        if (response.success) {
+            alert('Gato atualizado com sucesso!');
+            window.location.href = '../cms/gestaoGatos.php';
+        } else {
+            throw new Error(response.message || 'Erro ao atualizar o gato.');
+        }
+    } catch (error) {
+        alert(error.message);
+    } finally {
+        if (loadingSpinner) {
+            loadingSpinner.remove();
+        }
+        this.reset();
+    }
+});
+
+document.getElementById('deleteCatBtn').addEventListener('click', async function() {
+    const loadingSpinner = document.createElement('div');
+    loadingSpinner.className = 'loading-spinner';
+    
+    try {
+        if (confirm('Tem certeza que deseja excluir este gato?')) {
+            this.appendChild(loadingSpinner);
+            const catId = document.querySelector('input[name="id"]').value;
+            const response = await deleteCat(catId);
+            
+            if (response.success) {
+                window.location.href = '../cms/gestaoGatos.php';
+            } else {
+                throw new Error(response.message || 'Erro ao excluir o gato.');
+            }
+        }
+    } catch (error) {
+        alert(error.message);
+    } finally {
+        if (loadingSpinner) {
+            console.log("Finalizando");
+        }
+    }
+});
+
+async function updateCat(formData) {
+    let controller;
+    try {
+        controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+        
+        const response = await fetch('../controllers/atualizarGato.php', {
+            method: 'POST',
+            body: formData,
+            signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        return await response.json();
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            throw new Error('A requisição excedeu o tempo limite.');
+        }
+        throw new Error('Erro na comunicação com o servidor.');
+    } finally {
+        if (controller) {
+            console.log("Finalizando");
+        }
+    }
+}
+
+async function deleteCat(catId) {
+    let controller;
+    try {
+        controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+        
+        const response = await fetch(`../controllers/deletarGato.php?idb=${catId}`, {
+            method: 'GET',
+            signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        return await response.json();
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            throw new Error('A requisição excedeu o tempo limite.');
+        }
+        throw new Error('Erro na comunicação com o servidor.');
+    } finally {
+        if (controller) {
+            console.log("Finalizando");
+        }
+    }
+}
+</script>
 
 <?php
 include ("../views/blades/footer3.php");

@@ -76,6 +76,69 @@ include ("../views/blades/sidebar.php");
         </div>
     </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('catForm'); // Altere 'catForm' para o id do seu formulário se for diferente
+    const alertMessage = document.getElementById('alertMessage'); // Altere 'alertMessage' para o id do elemento de alerta se for diferente
+    const submitButton = document.getElementById('submitButton'); // Altere 'submitButton' para o id do botão de envio se for diferente
+    const spinner = submitButton.querySelector('.spinner-border');
+
+    function showAlert(message, type) {
+        alertMessage.textContent = message;
+        alertMessage.className = `alert alert-${type}`;
+        alertMessage.classList.remove('d-none');
+    }
+
+    function setLoading(loading) {
+        submitButton.disabled = loading;
+        spinner.classList.toggle('d-none', !loading);
+    }
+
+    async function submitFormData(formData) {
+        try {
+            const response = await fetch('URL_DO_SEU_SCRIPT_PHP', { // Substitua pela URL correta do script PHP
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+            
+            if (result.success) {
+                console.log("Dados enviados com sucesso!");
+                setTimeout(() => {
+                    window.location.href = 'URL_PARA_REDIRECIONAMENTO'; // Substitua pela URL de redirecionamento desejada
+                }, 1500);
+            } else {
+                throw new Error(result.message || 'Erro ao enviar os dados');
+            }
+        } catch (error) {
+            console.log(error.message);
+            showAlert(error.message, 'danger');
+            setLoading(false);
+        }
+    }
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        setLoading(true);
+        alertMessage.classList.add('d-none');
+
+        const formData = new FormData(this);
+        const fileInput = form.querySelector('input[type="file"]');
+        
+        if (fileInput && fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            if (file.type !== 'image/png') {
+                showAlert('Por favor, insira apenas arquivos PNG.', 'danger');
+                setLoading(false);
+                return;
+            }
+        }
+
+        await submitFormData(formData);
+    });
+});
+</script>
 
 <?php
 include ("../views/blades/footer3.php");
